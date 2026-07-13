@@ -8,16 +8,16 @@ export function Footer() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] aspect-square bg-mandala opacity-[0.02] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-10 mb-20">
           
           {/* Col 1 */}
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-full border-2 border-gold overflow-hidden flex items-center justify-center p-1 shadow-sacred-glow">
+              <div className="w-14 h-14 rounded-full border-2 border-gold overflow-hidden flex items-center justify-center bg-cream-soft shadow-sacred-glow shrink-0">
                 <img 
                   src="https://res.cloudinary.com/deiusxdk9/image/upload/v1771952737/rudrantra/cms/rswcale9xcfa697s2kvw.png" 
                   alt="Rudrantra Logo" 
-                  className="w-full h-full object-cover rounded-full mix-blend-screen"
+                  className="w-full h-full object-cover rounded-full"
                 />
               </div>
               <div>
@@ -79,6 +79,32 @@ export function Footer() {
               </a>
               <a href="#" className="w-10 h-10 rounded-full border border-gold/30 bg-forest/50 flex items-center justify-center text-gold hover:bg-[#25D366] hover:border-[#25D366] hover:text-white transition-all">
                 <MessageCircle className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* Col 5 - Download App */}
+          <div className="flex flex-col gap-6">
+            <h4 className="font-heading font-bold text-lg uppercase tracking-widest text-gold flex items-center gap-2">
+              <span className="w-4 h-px bg-gold/50"></span> Download Our App
+            </h4>
+            <p className="text-cream-soft/70 font-body text-sm leading-relaxed max-w-xs">
+              Shop Rudraksha, track orders, and book consultations on the go.
+            </p>
+            <div className="flex flex-col gap-3">
+              <a href="#" className="inline-block w-fit">
+                <img
+                  src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                  alt="Download on the App Store"
+                  className="h-11 w-auto rounded-lg"
+                />
+              </a>
+              <a href="#" className="inline-block w-fit">
+                <img
+                  src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                  alt="Get it on Google Play"
+                  className="h-11 w-auto"
+                />
               </a>
             </div>
           </div>

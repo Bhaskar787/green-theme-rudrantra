@@ -4,48 +4,54 @@ const trustItems = [
   {
     icon: GiMeditation,
     title: "Vedic Energization",
-    desc: "Every bead is blessed according to ancient scriptures"
+    desc: "Every bead is blessed according to ancient Vedic scriptures."
   },
   {
     icon: GiMountainCave,
     title: "Himalayan Origin",
-    desc: "Hand-selected exclusively from Nepal's sacred Arun Valley"
+    desc: "Hand-selected exclusively from Nepal's sacred Arun Valley."
   },
   {
     icon: GiLotusFlower,
     title: "Lab Verification",
-    desc: "100% authentic, X-Ray certified for peace of mind"
+    desc: "100% authentic, X-Ray certified for total peace of mind."
   }
 ];
 
 export function TrustStrip() {
   return (
-    <section className="w-full relative py-20 border-y border-gold/20 overflow-hidden bg-forest-mid">
-      {/* Background with Mt. Everest overlay */}
-      <div 
-        className="absolute inset-0 opacity-10 bg-cover bg-center"
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1516302350523-4a2b77b39054?auto=format&fit=crop&w=1920&q=80")' }}
-      />
-      {/* Mandala watermark */}
-      <div className="absolute inset-0 bg-mandala opacity-[0.05]" />
+    /* Deep Forest Background */
+    <section className="relative py-24 border-y border-gold/20 bg-[#0A1A14]">
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+      {/* Background Image Overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.05] bg-cover bg-center"
+        style={{ backgroundImage: 'url("https://shivalordimage.com/storage/2026/06/Sacred-Shivling-with-Rudraksha-Mala-in-Golden-Light-768x439.webp")' }}
+      />
+      
+      {/* Gradient Overlay for Depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1A14] via-transparent to-[#0A1A14]" />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {trustItems.map((item, i) => (
             <div 
               key={i} 
-              className="flex flex-col items-center text-center group"
+              className="relative p-8 rounded-3xl border border-gold/10 bg-[#0F261E]/60 backdrop-blur-md flex flex-col items-center text-center group hover:bg-[#0F261E] hover:border-gold/30 transition-all duration-500"
             >
-              {/* Icon Container with golden border */}
-              <div className="w-20 h-20 rounded-full border-2 border-gold/40 bg-forest-deep flex items-center justify-center mb-6 text-gold transition-all duration-500 group-hover:border-gold group-hover:shadow-sacred-glow">
-                <item.icon className="w-10 h-10 group-hover:scale-110 transition-transform duration-500" />
+              {/* Glowing Icon Wrapper */}
+              <div className="relative mb-6">
+                <div className="absolute inset-0 bg-gold rounded-full blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
+                <div className="w-16 h-16 rounded-full border border-gold/30 bg-[#0A1A14] flex items-center justify-center text-gold shadow-lg group-hover:scale-105 transition-all duration-500">
+                  <item.icon className="w-8 h-8" />
+                </div>
               </div>
               
-              {/* Text Content */}
-              <h3 className="text-xl font-display font-bold text-gold mb-3 text-gold-gradient">
+              {/* Typography */}
+              <h3 className="text-xl font-display font-bold text-gold mb-3 tracking-wide">
                 {item.title}
               </h3>
-              <p className="text-cream-soft text-base font-body max-w-[240px] opacity-80 leading-relaxed">
+              <p className="text-gray-300 font-body text-sm leading-relaxed max-w-[200px]">
                 {item.desc}
               </p>
             </div>

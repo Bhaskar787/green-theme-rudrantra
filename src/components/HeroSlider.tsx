@@ -50,41 +50,42 @@ export function HeroSlider() {
   const slide = slides[current];
 
   return (
-    <section className="relative w-full h-[85vh] min-h-[600px] overflow-hidden bg-[#0a120a]">
-      {/* Background Image with Dark Overlay for Text Contrast */}
+    <section className="relative w-full h-[85vh] min-h-[600px] overflow-hidden bg-[#0A1A14]">
+      {/* Background Image with subtle opacity */}
       <div
-        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ${isTransitioning ? 'opacity-0' : 'opacity-60'}`}
+        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${isTransitioning ? 'opacity-0' : 'opacity-40'}`}
         style={{ backgroundImage: `url(${slide.image})` }}
       />
       
-      {/* Stronger overlay to ensure white/gold text visibility */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0a120a] via-[#0a120a]/80 to-transparent" />
+      {/* Dark gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0A1A14] via-[#0A1A14]/70 to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center max-w-7xl mx-auto px-6 md:px-12">
-        <div className={`max-w-2xl transition-all duration-700 ${isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
-          <span className="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-gold mb-6 border-b border-gold pb-1">
+        <div className={`max-w-2xl transition-all duration-700 ${isTransitioning ? 'opacity-0 translate-y-6' : 'opacity-100 translate-y-0'}`}>
+          <span className="inline-block text-[11px] font-bold uppercase tracking-[0.3em] text-gold mb-6 border-b border-gold pb-1">
             {slide.tag}
           </span>
 
-          <h1 className="font-display text-5xl md:text-7xl text-white leading-[1.1] mb-6 whitespace-pre-line">
+          {/* Golden Gradient Title */}
+          <h1 className="font-display text-5xl md:text-7xl leading-[1.1] mb-6 whitespace-pre-line bg-gradient-to-b from-[#FFD700] via-[#F4D03F] to-[#B8860B] bg-clip-text text-transparent drop-shadow-lg">
             {slide.heading}
           </h1>
 
-          <p className="font-body text-gray-200 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
+          <p className="font-body text-gray-300 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
             {slide.sub}
           </p>
 
           <div className="flex flex-wrap gap-4">
             <Link
               href={slide.href}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-[#0a120a] font-bold uppercase tracking-widest text-sm hover:bg-white transition-colors"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-[#0A1A14] font-bold uppercase tracking-widest text-sm hover:bg-white transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)]"
             >
               {slide.cta}
             </Link>
             <Link
               href="#"
-              className="inline-flex items-center gap-3 px-8 py-4 border border-gold text-gold font-bold uppercase tracking-widest text-sm hover:bg-gold/10 transition-colors"
+              className="inline-flex items-center gap-3 px-8 py-4 border border-gold/50 text-gold font-bold uppercase tracking-widest text-sm hover:bg-gold/10 transition-all"
             >
               Book Consultation
             </Link>
@@ -95,18 +96,18 @@ export function HeroSlider() {
       {/* Navigation Arrows */}
       <button
         onClick={() => go(current - 1)}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 border border-gold/30 flex items-center justify-center text-gold hover:border-gold transition-all"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 border border-gold/30 flex items-center justify-center text-gold hover:border-gold transition-all hover:bg-gold/10"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={() => go(current + 1)}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 border border-gold/30 flex items-center justify-center text-gold hover:border-gold transition-all"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 border border-gold/30 flex items-center justify-center text-gold hover:border-gold transition-all hover:bg-gold/10"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
 
-      {/* Simplified Dot Indicators */}
+      {/* Indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
         {slides.map((_, i) => (
           <button

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef, useEffect, useCallback } from 'react';
 import { ChevronDown, Search, ShieldCheck, Sparkles, Truck, Compass, MessageCircle, Phone } from 'lucide-react';
 import { GiLotusFlower } from 'react-icons/gi';
 
@@ -12,79 +12,44 @@ const categoryMeta: Record<Exclude<Category, 'All'>, { icon: typeof ShieldCheck 
 };
 
 const faqs: { q: string; a: string; category: Exclude<Category, 'All'> }[] = [
-  {
-    q: 'How do I know the Rudraksha is genuine and not a fake?',
-    a: 'Every Rudraksha from Rudrantra comes with a numbered X-ray laboratory certificate that shows the internal bead structure, mukhi count, and seed density. We also apply the traditional copper coin test and water float test before packaging. Our sourcing is direct from growers in Nepal\'s Arun Valley, bypassing the middlemen who introduce adulterated beads into the market.',
-    category: 'Authenticity',
-  },
-  {
-    q: 'What is the difference between Nepali and Java Rudraksha?',
-    a: 'Nepali beads, sourced from the Arun and Dolakha valleys, are larger and denser with deeper mukhi lines, and are prized by serious collectors. Java (Indonesian) beads are smaller and more affordable, making them an excellent entry point for new wearers. We stock and clearly label both origins.',
-    category: 'Authenticity',
-  },
-  {
-    q: 'How do I know my Rudraksha is authentic and not artificially carved?',
-    a: 'Every premium bead ships with an independent X-Ray laboratory certificate confirming the internal compartment structure matches the external mukhi lines, which guarantees zero artificial carving, resin-filling, or tampering. You can verify each certificate number on our lab partner\'s portal at any time.',
-    category: 'Authenticity',
-  },
-  {
-    q: 'Can I wear Rudraksha without a religious ceremony or initiation?',
-    a: 'Yes. While we recommend the Prana Pratishtha energization ceremony, which we perform for every bead before shipping, Rudraksha can be worn by any sincere person regardless of their religious background. The bead works through its electromagnetic and bioelectric properties, which are intrinsic to the seed itself, not conferred only through ritual.',
-    category: 'Spiritual',
-  },
-  {
-    q: 'Which Mukhi is right for me as a beginner?',
-    a: 'The 5 Mukhi (Panch Mukhi) is universally recommended as a starting point. Ruled by Jupiter and Lord Kalagni Rudra, it supports general health, mental clarity, and spiritual awareness without any restrictions on who can wear it. It is the most abundant mukhi and also the most forgiving in terms of the wearer\'s lifestyle.',
-    category: 'Spiritual',
-  },
-  {
-    q: 'How should I care for and maintain my Rudraksha?',
-    a: 'Clean your beads monthly using a soft brush and neem oil or sandalwood oil to maintain the natural oils of the wood. Avoid exposing them to harsh chemicals, perfumes, or saltwater. Remove before bathing or sleeping initially, although once properly attuned to your energy, typically after 40 days of continuous wearing, many practitioners do not remove them at all.',
-    category: 'Wearing & Care',
-  },
-  {
-    q: 'What thread or metal should I use to string my Rudraksha?',
-    a: 'Red or yellow silk thread is traditional and lets the bead breathe naturally. Silver is considered spiritually neutral and is our most recommended metal for caps and chains; copper is favoured for Saturn-related mukhis, while gold is generally reserved for higher mukhis at a devotee\'s discretion.',
-    category: 'Wearing & Care',
-  },
-  {
-    q: 'Can I wear multiple Mukhis at the same time?',
-    a: 'Yes, wearing combinations of different Mukhis is common practice and often recommended. Our Siddha Mala contains all 14 Mukhis in a single piece, and we also offer custom-designed combinations based on your birth chart. Some practitioners wear specific Mukhis on different days or positions; our consultants can advise on the optimal combination for you.',
-    category: 'Wearing & Care',
-  },
-  {
-    q: 'Do you ship internationally? How long does delivery take?',
-    a: 'Yes, we ship worldwide with DHL Express and FedEx. Delivery within India takes 2 to 4 business days. International shipments typically arrive in 7 to 14 business days depending on customs. All international orders are shipped with a commercial invoice reflecting the spiritual and decorative value of the items to ease customs clearance.',
-    category: 'Shipping',
-  },
-  {
-    q: 'Is my payment information secure, and what methods do you accept?',
-    a: 'All transactions are processed through PCI-DSS compliant gateways with 256-bit encryption. We accept major credit and debit cards, UPI, net banking, and PayPal for international customers. We never store your full card details on our servers.',
-    category: 'Shipping',
-  },
-  {
-    q: 'Can I return or exchange my Rudraksha if I am not satisfied?',
-    a: 'We offer a 7-day return window for undamaged items in original packaging. Because of the sacred and personal nature of energized Rudraksha, exchanges are handled case-by-case. If you receive a bead that does not match its certificate or has visible damage, we will replace it at no cost, no questions asked.',
-    category: 'Shipping',
-  },
-  {
-    q: 'What is the Pashupatinath energization and does it cost extra?',
-    a: 'Every bead we sell is blessed in a collective Rudra Abhishekam ceremony performed by our resident Vedic pandits at Pashupatinath Temple in Kathmandu; this is included in every order at no additional charge. For personalized energization with your name and gotra spoken during the ceremony, we offer an upgraded puja service.',
-    category: 'Spiritual',
-  },
-  {
-    q: 'Do you offer personalised consultations before I buy?',
-    a: 'Yes. Every order over a certain value includes a complimentary consultation with one of our Vedic astrologers, who will review your birth details and recommend a mukhi and combination suited to your specific goals.',
-    category: 'Spiritual',
-  },
+  { q: 'How do I know the Rudraksha is genuine and not a fake?', a: "Every Rudraksha from Rudrantra comes with a numbered X-ray laboratory certificate that shows the internal bead structure, mukhi count, and seed density. We also apply the traditional copper coin test and water float test before packaging. Our sourcing is direct from growers in Nepal's Arun Valley, bypassing the middlemen who introduce adulterated beads into the market.", category: 'Authenticity' },
+  { q: 'What is the difference between Nepali and Java Rudraksha?', a: 'Nepali beads, sourced from the Arun and Dolakha valleys, are larger and denser with deeper mukhi lines, and are prized by serious collectors. Java (Indonesian) beads are smaller and more affordable, making them an excellent entry point for new wearers. We stock and clearly label both origins.', category: 'Authenticity' },
+  { q: 'How do I know my Rudraksha is authentic and not artificially carved?', a: "Every premium bead ships with an independent X-Ray laboratory certificate confirming the internal compartment structure matches the external mukhi lines, which guarantees zero artificial carving, resin-filling, or tampering. You can verify each certificate number on our lab partner's portal at any time.", category: 'Authenticity' },
+  { q: 'Can I wear Rudraksha without a religious ceremony or initiation?', a: 'Yes. While we recommend the Prana Pratishtha energization ceremony, which we perform for every bead before shipping, Rudraksha can be worn by any sincere person regardless of their religious background. The bead works through its electromagnetic and bioelectric properties, which are intrinsic to the seed itself, not conferred only through ritual.', category: 'Spiritual' },
+  { q: 'Which Mukhi is right for me as a beginner?', a: 'The 5 Mukhi (Panch Mukhi) is universally recommended as a starting point. Ruled by Jupiter and Lord Kalagni Rudra, it supports general health, mental clarity, and spiritual awareness without any restrictions on who can wear it.', category: 'Spiritual' },
+  { q: 'How should I care for and maintain my Rudraksha?', a: 'Clean your beads monthly using a soft brush and neem oil or sandalwood oil. Avoid harsh chemicals, perfumes, or saltwater. Remove before bathing or sleeping initially; once attuned to your energy (~40 days), many practitioners keep them on continuously.', category: 'Wearing & Care' },
+  { q: 'What thread or metal should I use to string my Rudraksha?', a: 'Red or yellow silk thread is traditional and lets the bead breathe. Silver is spiritually neutral and our most recommended metal; copper is favoured for Saturn-related mukhis, while gold is reserved for higher mukhis.', category: 'Wearing & Care' },
+  { q: 'Can I wear multiple Mukhis at the same time?', a: 'Yes. Our Siddha Mala contains all 14 Mukhis in a single piece, and we also offer custom-designed combinations based on your birth chart.', category: 'Wearing & Care' },
+  { q: 'Do you ship internationally? How long does delivery take?', a: 'Yes, worldwide with DHL Express and FedEx. India: 2–4 business days. International: 7–14 business days depending on customs.', category: 'Shipping' },
+  { q: 'Is my payment information secure, and what methods do you accept?', a: 'All transactions are processed through PCI-DSS compliant gateways with 256-bit encryption. We accept major cards, UPI, net banking, and PayPal.', category: 'Shipping' },
+  { q: 'Can I return or exchange my Rudraksha if I am not satisfied?', a: 'We offer a 7-day return window for undamaged items in original packaging. Beads not matching their certificate or arriving damaged are replaced at no cost.', category: 'Shipping' },
+  { q: 'What is the Pashupatinath energization and does it cost extra?', a: 'Every bead is blessed in a collective Rudra Abhishekam ceremony at Pashupatinath Temple in Kathmandu, included free. Personalized puja with your name and gotra is available as an upgrade.', category: 'Spiritual' },
+  { q: 'Do you offer personalised consultations before I buy?', a: 'Yes. Every order over a certain value includes a complimentary consultation with one of our Vedic astrologers.', category: 'Spiritual' },
 ];
 
 const categories: Category[] = ['All', 'Authenticity', 'Wearing & Care', 'Shipping', 'Spiritual'];
+
+// Stacking config: each item sticks a few px lower than the previous,
+// creating a card-stack effect ("beads on a mala thread"). As later cards
+// arrive at their sticky position they visually settle behind/under the
+// earlier ones, so we scale, dim and lift the earlier ones slightly to
+// sell real depth instead of a flat pile of identical cards.
+const STACK_TOP = 96; // px — matches top-24
+const STACK_OFFSET = 10; // px between stacked cards
+const MAX_DEPTH = 5; // how many "cards behind" we bother animating for
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [activeCategory, setActiveCategory] = useState<Category>('All');
   const [query, setQuery] = useState('');
+  const [depths, setDepths] = useState<number[]>([]);
+  const listRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const reducedMotion = useRef(false);
+
+  useEffect(() => {
+    reducedMotion.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }, []);
 
   const filtered = useMemo(() => {
     return faqs
@@ -97,10 +62,75 @@ export function FAQ() {
       });
   }, [activeCategory, query]);
 
+  // Recompute how "covered" each sticky card is, driven by scroll position.
+  // A card is considered stuck once its rect.top matches its resting offset;
+  // once stuck, every subsequent card that has ALSO become stuck counts as
+  // one layer of depth stacked in front of it.
+  const measure = useCallback(() => {
+    if (reducedMotion.current) return;
+    const nodes = cardRefs.current;
+    const stuck: boolean[] = nodes.map((el, i) => {
+      if (!el) return false;
+      const rect = el.getBoundingClientRect();
+      return rect.top <= STACK_TOP + i * STACK_OFFSET + 1;
+    });
+    const next = nodes.map((_, i) => {
+      if (!stuck[i]) return 0;
+      let covering = 0;
+      for (let j = i + 1; j < nodes.length; j++) {
+        if (stuck[j]) covering++;
+        else break;
+      }
+      return Math.min(covering, MAX_DEPTH);
+    });
+    setDepths((prev) => {
+      if (prev.length === next.length && prev.every((v, i) => v === next[i])) return prev;
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(measure);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    measure();
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [measure, filtered.length]);
+
   return (
     <section className="py-24 bg-forest-deep relative">
+      <style>{`
+        @keyframes faq-rise {
+          from { opacity: 0; transform: translateY(18px) scale(0.98); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes bead-pulse {
+          0% { box-shadow: 0 0 0 0 rgba(201,151,58,0.45); }
+          100% { box-shadow: 0 0 0 8px rgba(201,151,58,0); }
+        }
+        .faq-card-enter {
+          animation: faq-rise 0.55s cubic-bezier(0.16,1,0.3,1) both;
+        }
+        .faq-thread {
+          background: linear-gradient(to bottom, rgba(201,151,58,0) 0%, rgba(201,151,58,0.35) 6%, rgba(201,151,58,0.35) 94%, rgba(201,151,58,0) 100%);
+        }
+        .faq-bead-active {
+          animation: bead-pulse 1.1s cubic-bezier(0.16,1,0.3,1) 1;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .faq-card-enter { animation: none; opacity: 1; transform: none; }
+          .faq-bead-active { animation: none; }
+        }
+      `}</style>
       <div className="absolute inset-0 bg-stars opacity-10 pointer-events-none" />
-
       <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-10">
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <span className="inline-flex items-center gap-2 text-[10px] font-heading font-bold uppercase tracking-widest text-gold border border-gold/30 bg-gold/5 px-5 py-2 rounded-full mb-6">
@@ -130,7 +160,7 @@ export function FAQ() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-xs font-heading font-bold uppercase tracking-widest border transition-all ${
+              className={`px-5 py-2 rounded-full text-xs font-heading font-bold uppercase tracking-widest border transition-all duration-300 ${
                 activeCategory === cat
                   ? 'bg-gold text-forest-deep border-gold shadow-[0_0_15px_rgba(201,151,58,0.3)]'
                   : 'text-gold/70 border-gold/30 hover:border-gold hover:text-gold'
@@ -142,51 +172,122 @@ export function FAQ() {
         </div>
 
         <div className="grid md:grid-cols-[1fr_300px] gap-10 items-start">
-          <div className="flex flex-col gap-3">
+          {/* IMPORTANT: no `overflow-hidden` on any ancestor of the sticky items,
+              otherwise position:sticky silently breaks. */}
+          <div ref={listRef} className="flex flex-col gap-3 relative">
             {filtered.length === 0 && (
               <div className="text-center py-16 text-cream/50 border border-dashed border-gold/20 rounded-2xl">
                 No questions match "{query}". Try a different search term, or ask us directly.
               </div>
             )}
-            {filtered.map((faq) => {
+
+            {/* the mala thread running behind the bead icons, tying the stack
+                together visually as one strung necklace rather than a loose pile */}
+            {filtered.length > 0 && (
+              <div
+                aria-hidden
+                className="hidden sm:block faq-thread absolute left-[41px] top-6 bottom-6 w-px z-0"
+              />
+            )}
+
+            {filtered.map((faq, i) => {
               const isOpen = openIndex === faq.originalIndex;
               const Icon = categoryMeta[faq.category].icon;
+              const top = STACK_TOP + i * STACK_OFFSET;
+              const depth = depths[i] ?? 0;
+              const panelId = `faq-panel-${faq.originalIndex}`;
+              const buttonId = `faq-trigger-${faq.originalIndex}`;
+
+              // Depth-driven "receding stack" transform: cards that have been
+              // caught up on get subtly smaller, dimmer and lifted, so the
+              // pile reads as layered rather than flat and identical.
+              const scale = isOpen ? 1 : 1 - depth * 0.012;
+              const liftY = isOpen ? 0 : -depth * 2;
+              const dim = isOpen ? 0 : depth * 0.05;
+
               return (
                 <div
-                  key={faq.originalIndex}
-                  className={`rounded-xl border transition-all duration-300 overflow-hidden ${
-                    isOpen ? 'border-gold/50 bg-forest shadow-[0_0_20px_rgba(201,151,58,0.08)]' : 'border-gold/15 bg-forest/40 hover:border-gold/30'
-                  }`}
+                  key={`${activeCategory}-${query}-${faq.originalIndex}`}
+                  className="sticky faq-card-enter"
+                  style={{
+                    top: `${top}px`,
+                    zIndex: isOpen ? 50 : 10 + i,
+                    animationDelay: `${Math.min(i, 8) * 40}ms`,
+                  }}
                 >
-                  <button
-                    className="w-full flex items-center gap-4 justify-between px-6 py-5 text-left"
-                    onClick={() => setOpenIndex(isOpen ? null : faq.originalIndex)}
+                  <div
+                    ref={(el) => { cardRefs.current[i] = el; }}
+                    className={`relative rounded-xl border transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      isOpen
+                        ? 'border-gold/50 bg-forest shadow-[0_16px_50px_rgba(0,0,0,0.45)]'
+                        : 'border-gold/15 bg-forest shadow-[0_6px_20px_rgba(0,0,0,0.35)] hover:border-gold/30'
+                    }`}
+                    style={{
+                      transform: `translateY(${liftY}px) scale(${scale})`,
+                      transformOrigin: 'top center',
+                    }}
                   >
-                    <div className="flex items-center gap-4">
-                      <span
-                        className={`hidden sm:flex w-9 h-9 rounded-full items-center justify-center shrink-0 transition-colors ${
-                          isOpen ? 'bg-gold text-forest-deep' : 'bg-gold/10 text-gold'
-                        }`}
-                      >
-                        <Icon className="w-4 h-4" />
-                      </span>
-                      <span className={`font-heading text-base leading-snug transition-colors ${isOpen ? 'text-gold' : 'text-cream'}`}>
-                        {faq.q}
-                      </span>
-                    </div>
-                    <ChevronDown
-                      className={`w-5 h-5 text-gold transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`}
-                    />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
-                    <div className="px-6 pb-6 sm:pl-[70px]">
-                      <div className="h-px bg-gold/15 mb-4" />
-                      <p className="font-body text-cream/70 text-base leading-relaxed">{faq.a}</p>
+                    {/* depth scrim: darkens a receded card slightly so it reads
+                        as sitting further back in the stack */}
+                    {dim > 0 && (
+                      <div
+                        aria-hidden
+                        className="absolute inset-0 rounded-xl bg-black pointer-events-none transition-opacity duration-300"
+                        style={{ opacity: dim }}
+                      />
+                    )}
+
+                    <button
+                      id={buttonId}
+                      aria-expanded={isOpen}
+                      aria-controls={panelId}
+                      className="w-full flex items-center gap-4 justify-between px-6 py-5 text-left relative z-10 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2"
+                      onClick={() => setOpenIndex(isOpen ? null : faq.originalIndex)}
+                    >
+                      <div className="flex items-center gap-4">
+                        <span
+                          className={`hidden sm:flex w-9 h-9 rounded-full items-center justify-center shrink-0 transition-all duration-300 relative ${
+                            isOpen ? 'bg-gold text-forest-deep scale-110 faq-bead-active' : 'bg-gold/10 text-gold'
+                          }`}
+                        >
+                          <Icon className="w-4 h-4" />
+                        </span>
+                        <span className={`font-heading text-base leading-snug transition-colors duration-300 ${isOpen ? 'text-gold' : 'text-cream'}`}>
+                          {faq.q}
+                        </span>
+                      </div>
+                      <ChevronDown
+                        className={`w-5 h-5 text-gold transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] shrink-0 ${isOpen ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+
+                    <div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={buttonId}
+                      className={`grid relative z-10 transition-[grid-template-rows,opacity] duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                        isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div
+                          className="px-6 pb-6 sm:pl-[70px] transition-transform duration-300 ease-out"
+                          style={{ transform: isOpen ? 'translateY(0)' : 'translateY(-6px)' }}
+                        >
+                          <div className="h-px bg-gold/15 mb-4" />
+                          <p className="font-body text-cream/70 text-base leading-relaxed">{faq.a}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               );
             })}
+
+            {/* Spacer so the last card can travel to its sticky position before
+                the section ends. Only needs enough runway for the stack's own
+                offset range, not one card-height per item. */}
+            <div aria-hidden style={{ height: `${Math.max(filtered.length * STACK_OFFSET + 24, 60)}px` }} />
           </div>
 
           <aside className="md:sticky md:top-24 md:self-start">
@@ -200,19 +301,14 @@ export function FAQ() {
                   Our resident Vedic scholars and gemstone experts are available to clarify your spiritual queries. We typically respond within 3–4 business hours.
                 </p>
               </div>
-
               <div className="flex flex-col gap-3 pt-4 border-t border-gold/15">
-                <a
-                  href="tel:+919876543210"
-                  className="flex items-center gap-3 text-sm font-body text-cream hover:text-gold transition-colors"
-                >
+                <a href="tel:+919876543210" className="flex items-center gap-3 text-sm font-body text-cream hover:text-gold transition-colors">
                   <Phone className="w-4 h-4 text-gold shrink-0" /> +91 98765 43210
                 </a>
                 <p className="text-[10px] text-cream/40 uppercase tracking-widest pl-7">
                   Available Mon-Sat, 10am - 6pm IST
                 </p>
               </div>
-
               <div className="flex flex-col gap-3">
                 <a
                   href="https://wa.me/919876543210"

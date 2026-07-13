@@ -18,6 +18,8 @@ import { FAQ } from '@/components/FAQ';
 import { Newsletter } from '@/components/Newsletter';
 import { Footer } from '@/components/Footer';
 import { MenuDrawer } from '@/components/MenuDrawer';
+import { TrustPaymentBar } from '@/components/Trustpaymentbar';
+import { FloatingActions } from '@/components/Floatingactions';
 import { SearchOverlay } from '@/components/SearchOverlay';
 import { CartDrawer } from '@/components/CartDrawer';
 import { WishlistDrawer } from '@/components/WishlistDrawer';
@@ -47,6 +49,7 @@ export default function HomePage() {
         <Newsletter />
       </main>
 
+      <TrustPaymentBar />
       <Footer />
 
       {/* Global Overlays */}
@@ -54,6 +57,9 @@ export default function HomePage() {
       <SearchOverlay />
       <CartDrawer />
       <WishlistDrawer />
+
+      {/* Floating action buttons: WhatsApp, Ask AI, Scroll-to-top */}
+      <FloatingActions />
     </div>
   );
 }

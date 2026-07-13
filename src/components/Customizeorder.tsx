@@ -126,7 +126,7 @@ export function CustomizeOrder() {
       {/* Himalayan background — visible at a proper, tasteful opacity behind the astro field */}
       <div
         className="absolute inset-0 opacity-20 bg-cover bg-center"
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?auto=format&fit=crop&w=1920&q=80")' }}
+        style={{ backgroundImage: 'url("https://png.pngtree.com/background/20250109/original/pngtree-astrology-zodiac-sign-of-horoscope-in-deep-blue-the-star-and-picture-image_15515530.jpg")' }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-forest via-forest/70 to-forest pointer-events-none" />
 

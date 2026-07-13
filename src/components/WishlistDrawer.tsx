@@ -1,69 +1,194 @@
-import { useWishlist } from '@/context/WishlistContext';
+import { useEffect, useState } from 'react';
+import { useWishlist, WishlistItem } from '@/context/WishlistContext';
 import { useCart } from '@/context/CartContext';
-import { X, Heart, ShoppingCart } from 'lucide-react';
+import { X, Heart, ShoppingCart, ShoppingBag, Check } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
 
 export function WishlistDrawer() {
-  const { isWishlistOpen, setIsWishlistOpen, items, toggleWishlist } = useWishlist();
+  const { isWishlistOpen, setIsWishlistOpen, items, toggleWishlist, clearWishlist } = useWishlist();
   const { addToCart } = useCart();
 
-  if (!isWishlistOpen) return null;
+  // Local state lets us play a real closing animation instead of unmounting instantly.
+  const [shouldRender, setShouldRender] = useState(isWishlistOpen);
+  const [isClosing, setIsClosing] = useState(false);
+  const [removingId, setRemovingId] = useState<string | null>(null);
+  const [addedId, setAddedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (isWishlistOpen) {
+      setShouldRender(true);
+      setIsClosing(false);
+    } else if (shouldRender) {
+      setIsClosing(true);
+      const timer = setTimeout(() => {
+        setShouldRender(false);
+        setIsClosing(false);
+      }, 250);
+      return () => clearTimeout(timer);
+    }
+  }, [isWishlistOpen]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Lock page scroll while the drawer is open.
+  useEffect(() => {
+    if (isWishlistOpen) {
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = '';
+      };
+    }
+  }, [isWishlistOpen]);
+
+  // Close on Escape for a11y.
+  useEffect(() => {
+    if (!isWishlistOpen) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsWishlistOpen(false);
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [isWishlistOpen, setIsWishlistOpen]);
+
+  if (!shouldRender) return null;
+
+  const handleRemove = (id: string) => {
+    setRemovingId(id);
+    // Let the fade/scale-out play before actually removing the item from state.
+    setTimeout(() => {
+      const item = items.find((i) => i.id === id);
+      if (item) toggleWishlist(item);
+      setRemovingId(null);
+    }, 200);
+  };
+
+  const handleAddToCart = (item: WishlistItem) => {
+    addToCart(item);
+    setAddedId(item.id);
+    setTimeout(() => setAddedId(null), 1200);
+  };
+
+  const handleMoveAllToCart = () => {
+    items.forEach((item) => addToCart(item));
+    clearWishlist();
+    setIsWishlistOpen(false);
+  };
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end">
-      <div 
-        className="absolute inset-0 bg-forest-deep/80 backdrop-blur-sm transition-opacity"
+    <div
+      className="fixed inset-0 z-50 flex justify-end"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Wishlist"
+    >
+      <div
+        className={`absolute inset-0 bg-forest-deep/80 backdrop-blur-sm transition-opacity duration-300 ${
+          isClosing ? 'opacity-0' : 'opacity-100'
+        }`}
         onClick={() => setIsWishlistOpen(false)}
       />
-      
-      <div className="relative w-full max-w-md h-full bg-forest-mid flex flex-col shadow-2xl animate-in slide-in-from-right duration-300 border-l border-gold/30">
+
+      <div
+        className={`relative w-full max-w-md h-full bg-[#091a0f] flex flex-col shadow-2xl border-l border-gold/30 transition-transform duration-300 ease-out ${
+          isClosing ? 'translate-x-full' : 'translate-x-0 animate-in slide-in-from-right'
+        }`}
+      >
         <div className="flex items-center justify-between p-6 border-b border-gold/20 bg-forest-deep">
           <h2 className="font-display text-2xl text-gold flex items-center gap-2">
             <Heart className="w-6 h-6" /> Sacred Wishlist
+            {items.length > 0 && (
+              <span className="text-xs font-heading font-bold bg-gold text-forest-deep rounded-full w-6 h-6 flex items-center justify-center ml-1">
+                {items.length}
+              </span>
+            )}
           </h2>
-          <button 
+          <button
             onClick={() => setIsWishlistOpen(false)}
-            className="p-2 text-gold hover:text-gold-bright hover:bg-forest transition-colors rounded-full"
+            aria-label="Close wishlist"
+            className="p-2 text-gold hover:text-gold-bright hover:bg-forest hover:rotate-90 transition-all duration-300 rounded-full"
           >
             <X className="w-6 h-6" />
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-6 bg-forest-mid">
+        <div className="flex-1 overflow-y-auto p-6 bg-[#091a0f]">
           {items.length === 0 ? (
-            <div className="h-full flex flex-col items-center justify-center text-cream-soft opacity-60">
-              <Heart className="w-16 h-16 mb-4 text-gold/50" />
-              <p className="font-heading text-lg">Your wishlist is empty</p>
+            <div className="h-full flex flex-col items-center justify-center text-cream-soft text-center animate-in fade-in zoom-in-95 duration-500">
+              <Heart className="w-16 h-16 mb-4 text-gold/40" />
+              <p className="font-heading text-lg mb-2">Your wishlist is empty</p>
+              <p className="text-sm text-cream-soft/50 mb-6 max-w-[240px]">
+                Save the beads and malas that speak to you — they'll wait for you here.
+              </p>
+              <button
+                onClick={() => setIsWishlistOpen(false)}
+                className="px-6 py-2.5 rounded-full border border-gold/40 text-gold text-xs font-heading font-bold uppercase tracking-widest hover:bg-gold hover:text-forest-deep transition-colors"
+              >
+                Continue Browsing
+              </button>
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-4">
-              {items.map((item) => (
-                <div key={item.id} className="group relative flex flex-col bg-forest-deep rounded-2xl p-3 border border-gold/20">
-                  <div className="relative aspect-square rounded-xl overflow-hidden mb-3 border border-gold/10">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+              {items.map((item, i) => {
+                const isRemoving = removingId === item.id;
+                const justAdded = addedId === item.id;
+                return (
+                  <div
+                    key={item.id}
+                    style={{ animationDelay: `${i * 60}ms` }}
+                    className={`group relative flex flex-col bg-forest-deep rounded-2xl p-3 border border-gold/20 transition-all duration-200 hover:border-gold/50 hover:shadow-sacred-glow animate-in fade-in slide-in-from-bottom-2 fill-mode-both ${
+                      isRemoving ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
+                    }`}
+                  >
+                    <div className="relative aspect-square rounded-xl overflow-hidden mb-3 border border-gold/10">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <button
+                        onClick={() => handleRemove(item.id)}
+                        aria-label={`Remove ${item.name} from wishlist`}
+                        className="absolute top-2 right-2 p-1.5 bg-forest-deep/80 backdrop-blur rounded-full text-gold hover:bg-crimson hover:text-cream transition-colors"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                    <h3 className="font-heading text-sm text-gold font-semibold mb-1 line-clamp-1">{item.name}</h3>
+                    <p className="text-xs text-cream mb-3">{formatPrice(item.price)}</p>
                     <button
-                      onClick={() => toggleWishlist(item)}
-                      className="absolute top-2 right-2 p-1.5 bg-forest-deep/80 backdrop-blur rounded-full text-gold hover:bg-forest hover:text-crimson transition-colors"
+                      onClick={() => handleAddToCart(item)}
+                      disabled={justAdded}
+                      className={`mt-auto w-full py-2 border text-xs font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 flex items-center justify-center gap-1 ${
+                        justAdded
+                          ? 'bg-gold border-gold text-forest-deep'
+                          : 'bg-forest border-gold/30 text-gold hover:bg-gold hover:text-forest-deep'
+                      }`}
                     >
-                      <X className="w-4 h-4" />
+                      {justAdded ? (
+                        <>
+                          <Check className="w-3 h-3" /> Added
+                        </>
+                      ) : (
+                        <>
+                          <ShoppingCart className="w-3 h-3" /> Add
+                        </>
+                      )}
                     </button>
                   </div>
-                  <h3 className="font-heading text-sm text-gold font-semibold mb-1 line-clamp-1">{item.name}</h3>
-                  <p className="text-xs text-cream mb-3">{formatPrice(item.price)}</p>
-                  <button 
-                    onClick={() => {
-                      addToCart(item);
-                      setIsWishlistOpen(false);
-                    }}
-                    className="mt-auto w-full py-2 bg-forest border border-gold/30 text-gold text-xs font-semibold uppercase tracking-wider rounded-lg hover:bg-gold hover:text-forest transition-colors flex items-center justify-center gap-1"
-                  >
-                    <ShoppingCart className="w-3 h-3" /> Add
-                  </button>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
+
+        {items.length > 0 && (
+          <div className="p-6 border-t border-gold/20 bg-forest-deep">
+            <button
+              onClick={handleMoveAllToCart}
+              className="w-full py-3.5 bg-gradient-to-r from-gold to-gold-soft text-forest-deep font-heading font-bold text-xs uppercase tracking-widest rounded-full transition-all hover:shadow-sacred-glow flex items-center justify-center gap-2"
+            >
+              <ShoppingBag className="w-4 h-4" /> Move All to Cart
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
