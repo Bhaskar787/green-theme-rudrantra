@@ -1,0 +1,101 @@
+import { Instagram, Facebook, MessageCircle } from 'lucide-react';
+import { Link } from 'wouter';
+
+export function Footer() {
+  return (
+    <footer className="bg-[#040D07] text-cream pt-24 pb-8 relative overflow-hidden border-t border-gold/20">
+      {/* Faint mandala watermark */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] aspect-square bg-mandala opacity-[0.02] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
+          
+          {/* Col 1 */}
+          <div className="flex flex-col gap-6">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-14 h-14 rounded-full border-2 border-gold overflow-hidden flex items-center justify-center p-1 shadow-sacred-glow">
+                <img 
+                  src="https://res.cloudinary.com/deiusxdk9/image/upload/v1771952737/rudrantra/cms/rswcale9xcfa697s2kvw.png" 
+                  alt="Rudrantra Logo" 
+                  className="w-full h-full object-cover rounded-full mix-blend-screen"
+                />
+              </div>
+              <div>
+                <span className="font-display text-3xl font-bold tracking-widest text-gold-gradient block">
+                  Rudrantra
+                </span>
+                <span className="text-[10px] font-heading font-bold text-gold tracking-widest mt-1 block">ॐ नमः शिवाय</span>
+              </div>
+            </Link>
+            <p className="text-cream/60 font-body text-sm leading-relaxed max-w-xs mt-2">
+              Sacred Rudraksha from the Arun Valley, Nepal. Blessed at Pashupatinath, lab-certified, and delivered worldwide since 1973.
+            </p>
+          </div>
+
+          {/* Col 2 */}
+          <div className="flex flex-col gap-6">
+            <h4 className="font-heading font-bold text-lg uppercase tracking-widest text-gold flex items-center gap-2">
+              <span className="w-4 h-px bg-gold/50"></span> Collections
+            </h4>
+            <nav className="flex flex-col gap-4">
+              <Link href="#" className="text-cream-soft/70 hover:text-gold transition-colors text-sm font-heading tracking-wider">Single Beads</Link>
+              <Link href="#" className="text-cream-soft/70 hover:text-gold transition-colors text-sm font-heading tracking-wider">Mala & Rosaries</Link>
+              <Link href="#" className="text-cream-soft/70 hover:text-gold transition-colors text-sm font-heading tracking-wider">Siddha Mala</Link>
+              <Link href="#" className="text-cream-soft/70 hover:text-gold transition-colors text-sm font-heading tracking-wider">Bracelets</Link>
+              <Link href="#" className="text-cream-soft/70 hover:text-gold transition-colors text-sm font-heading tracking-wider">Pooja Items</Link>
+            </nav>
+          </div>
+
+          {/* Col 3 */}
+          <div className="flex flex-col gap-6">
+            <h4 className="font-heading font-bold text-lg uppercase tracking-widest text-gold flex items-center gap-2">
+              <span className="w-4 h-px bg-gold/50"></span> Information
+            </h4>
+            <nav className="flex flex-col gap-4">
+              <Link href="#" className="text-cream-soft/70 hover:text-gold transition-colors text-sm font-heading tracking-wider">About Us</Link>
+              <Link href="#" className="text-cream-soft/70 hover:text-gold transition-colors text-sm font-heading tracking-wider">Book Consultation</Link>
+              <Link href="#" className="text-cream-soft/70 hover:text-gold transition-colors text-sm font-heading tracking-wider">Authenticity Guide</Link>
+              <Link href="#" className="text-cream-soft/70 hover:text-gold transition-colors text-sm font-heading tracking-wider">Shipping & Returns</Link>
+              <Link href="#" className="text-cream-soft/70 hover:text-gold transition-colors text-sm font-heading tracking-wider">FAQ</Link>
+            </nav>
+          </div>
+
+          {/* Col 4 */}
+          <div className="flex flex-col gap-6">
+            <h4 className="font-heading font-bold text-lg uppercase tracking-widest text-gold flex items-center gap-2">
+              <span className="w-4 h-px bg-gold/50"></span> Contact
+            </h4>
+            <div className="flex flex-col gap-3 text-cream-soft/70 text-sm font-body">
+              <p>support@rudrantra.com</p>
+              <p>+91 98765 43210</p>
+              <p>Thamel, Kathmandu, Nepal</p>
+            </div>
+            <div className="flex items-center gap-4 mt-4">
+              <a href="#" className="w-10 h-10 rounded-full border border-gold/30 bg-forest/50 flex items-center justify-center text-gold hover:bg-gold hover:text-[#040D07] transition-all">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full border border-gold/30 bg-forest/50 flex items-center justify-center text-gold hover:bg-gold hover:text-[#040D07] transition-all">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full border border-gold/30 bg-forest/50 flex items-center justify-center text-gold hover:bg-[#25D366] hover:border-[#25D366] hover:text-white transition-all">
+                <MessageCircle className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Golden Divider Line */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-40 mb-8"></div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-heading tracking-widest uppercase text-cream/40">
+          <p>© {new Date().getFullYear()} Rudrantra. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <Link href="#" className="hover:text-gold transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-gold transition-colors">Terms of Service</Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

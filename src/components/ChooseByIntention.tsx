@@ -1,0 +1,113 @@
+import { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
+
+const tabs = [
+  { id: 'growth', label: 'Spiritual Growth', desc: 'Deepen sadhana, meditation, and devotion.' },
+  { id: 'prosperity', label: 'Prosperity', desc: 'Invite abundance and financial clarity into daily life.' },
+  { id: 'protection', label: 'Protection', desc: 'Shield against negative energy and instability.' },
+  { id: 'harmony', label: 'Harmony', desc: 'Restore balance in relationships and the home.' },
+  { id: 'wellness', label: 'Wellness', desc: 'Support physical vitality and calm the nervous system.' },
+];
+
+const productMap: Record<string, string[]> = {
+  growth: [
+    "https://himalayarudraksh.online/cdn/shop/files/1-13-mukhi-shiv-shakti-rudraksha-mala-nepal-origin-499218.png?v=1750001216&width=3840",
+    "https://rudrakshashop.in/cdn/shop/files/shopping.webp?v=1765300308",
+    "https://m.media-amazon.com/images/I/51orjIrx2pL._AC_UF894,1000_QL80_.jpg"
+  ],
+  prosperity: [
+    "https://rudrakshashop.in/cdn/shop/files/shopping.webp?v=1765300308",
+    "https://m.media-amazon.com/images/I/51orjIrx2pL._AC_UF894,1000_QL80_.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEkJz5pJyZzfhXm_VJs62WVv4LjKifyYNOq0PdgJ3zTUJ0J-G-L4BFHsrR&s=10"
+  ],
+  protection: [
+    "https://m.media-amazon.com/images/I/51orjIrx2pL._AC_UF894,1000_QL80_.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEkJz5pJyZzfhXm_VJs62WVv4LjKifyYNOq0PdgJ3zTUJ0J-G-L4BFHsrR&s=10",
+    "https://himalayarudraksh.online/cdn/shop/files/1-13-mukhi-shiv-shakti-rudraksha-mala-nepal-origin-499218.png?v=1750001216&width=3840"
+  ],
+  harmony: [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEkJz5pJyZzfhXm_VJs62WVv4LjKifyYNOq0PdgJ3zTUJ0J-G-L4BFHsrR&s=10",
+    "https://himalayarudraksh.online/cdn/shop/files/1-13-mukhi-shiv-shakti-rudraksha-mala-nepal-origin-499218.png?v=1750001216&width=3840",
+    "https://rudrakshashop.in/cdn/shop/files/shopping.webp?v=1765300308"
+  ],
+  wellness: [
+    "https://himalayarudraksh.online/cdn/shop/files/1-13-mukhi-shiv-shakti-rudraksha-mala-nepal-origin-499218.png?v=1750001216&width=3840",
+    "https://rudrakshashop.in/cdn/shop/files/shopping.webp?v=1765300308",
+    "https://m.media-amazon.com/images/I/51orjIrx2pL._AC_UF894,1000_QL80_.jpg"
+  ]
+};
+
+export function ChooseByIntention() {
+  const [activeTab, setActiveTab] = useState(tabs[0].id);
+
+  const activeData = tabs.find(t => t.id === activeTab)!;
+  const activeImages = productMap[activeTab];
+
+  return (
+    <section className="py-24 bg-forest relative border-y border-gold/10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+        <h2 className="text-4xl md:text-5xl font-display text-gold-gradient text-center mb-16">Shop by Intention</h2>
+        
+        {/* Tab Strip */}
+        <div className="flex overflow-x-auto hide-scrollbar border-b border-gold/20 mb-16 -mx-4 px-4 md:mx-0 md:px-0 md:justify-center">
+          <div className="flex gap-8">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`pb-4 whitespace-nowrap text-lg font-heading transition-all border-b-2 ${
+                  activeTab === tab.id 
+                    ? 'border-gold text-gold text-shadow-glow scale-105' 
+                    : 'border-transparent text-cream/50 hover:text-cream'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="bg-forest-deep rounded-3xl p-8 md:p-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-24 border border-gold/20 shadow-xl relative overflow-hidden">
+          
+          {/* Subtle background graphic */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+
+          <div className="flex-1 max-w-xl relative z-10">
+            <span className="text-gold flex items-center gap-2 font-heading font-bold uppercase tracking-widest text-sm mb-6">
+              <span className="w-6 h-px bg-gold"></span>
+              Curated for {activeData.label}
+            </span>
+            <h3 className="font-display text-3xl md:text-4xl text-cream mb-6 leading-tight">
+              {activeData.desc}
+            </h3>
+            <p className="text-cream-soft/70 font-body text-lg mb-10 leading-relaxed">
+              Every intention requires a different energetic resonance. We have selected specific combinations, malas, and single beads that traditionally support this path according to Vedic science.
+            </p>
+            <a href="#" className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gold to-gold-soft text-forest-deep rounded-full font-heading font-bold uppercase tracking-widest text-sm hover:shadow-sacred-glow transition-all">
+              Shop {activeData.label} <ArrowRight className="w-5 h-5" />
+            </a>
+          </div>
+
+          <div className="flex-1 w-full grid grid-cols-2 gap-4 relative z-10">
+            <div className="col-span-2 aspect-[2/1] rounded-2xl overflow-hidden border border-gold/20 shadow-lg relative group">
+              <img src={activeImages[0]} alt="Featured Malas" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-forest/30 group-hover:bg-transparent transition-colors duration-500" />
+            </div>
+            <div className="aspect-square rounded-2xl overflow-hidden border border-gold/20 shadow-lg relative group">
+              <img src={activeImages[1]} alt="Collector Beads" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-forest/30 group-hover:bg-transparent transition-colors duration-500" />
+            </div>
+            <div className="aspect-square rounded-2xl overflow-hidden border border-gold/20 shadow-lg relative bg-forest-mid flex flex-col items-center justify-center p-6 text-center group hover:border-gold transition-colors cursor-pointer">
+               <div className="absolute inset-0 bg-mandala opacity-10 pointer-events-none" />
+               <img src={activeImages[2]} alt="Single Bead Focus" className="w-20 h-20 rounded-full object-cover mb-4 border-2 border-gold/40 shadow-sacred-glow" />
+               <span className="font-display text-xl text-gold mb-2 relative z-10">Explore all</span>
+               <span className="text-xs font-heading uppercase tracking-widest text-cream/70 group-hover:text-cream transition-colors relative z-10">View collection</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
