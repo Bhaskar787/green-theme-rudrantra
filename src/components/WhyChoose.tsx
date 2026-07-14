@@ -29,10 +29,10 @@ export function WhyChoose() {
     <section className="py-24 bg-forest-light relative overflow-hidden">
       {/* Pashupatinath Background Overlay */}
       <div 
-        className="absolute inset-0 opacity-[0.24] mix-blend-luminosity bg-cover bg-center"
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1920&q=80")' }}
+        className="absolute inset-0 opacity-[0.45] bg-cover bg-center"
+        style={{ backgroundImage: 'url("https://static.vecteezy.com/system/resources/previews/069/690/059/large_2x/serene-monk-meditating-in-mountain-cave-illuminated-by-golden-rays-of-setting-sun-surrounded-by-lush-greenery-and-majestic-mountains-evokes-sense-of-peace-and-tranquility-free-photo.jpeg")' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-forest-light/85 via-transparent to-forest-light/85" />
+      <div className="absolute inset-0 bg-gradient-to-b from-forest-light/70 via-forest-light/35 to-forest-light/75" />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         

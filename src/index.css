@@ -30,7 +30,7 @@
   --animate-star-twinkle: star-twinkle 4s infinite ease-in-out;
   --animate-float-lotus: float-lotus 6s infinite ease-in-out;
   --animate-sacred-glow: sacred-glow 2s infinite alternate;
-  --animate-marquee: marquee 26s linear infinite;
+  --animate-marquee: marquee 10s linear infinite;
 }
 
 :root {

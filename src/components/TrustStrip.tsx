@@ -26,7 +26,7 @@ export function TrustStrip() {
       {/* Background Image Overlay */}
       <div 
         className="absolute inset-0 opacity-[0.25] bg-cover bg-center"
-        style={{ backgroundImage: 'url("https://shivalordimage.com/storage/2026/06/Sacred-Shivling-with-Rudraksha-Mala-in-Golden-Light-768x439.webp")' }}
+        style={{ backgroundImage: 'url("https://as1.ftcdn.net/v2/jpg/09/86/17/90/1000_F_986179075_gIxHHqtJZdtdkiOag24PniL2jUWTuXM1.jpg")' }}
       />
       
       {/* Gradient Overlay for Depth */}

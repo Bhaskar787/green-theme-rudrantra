@@ -8,7 +8,7 @@ const posts = [
     excerpt: 'Ancient Vedic wisdom meets contemporary bioelectric research. Studies from NIMHANS and IIT demonstrate measurable electromagnetic properties in authentic Rudraksha beads.',
     readTime: '7 min read',
     date: 'June 2026',
-    image: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80',
+    image: 'https://rudrakx.com/_next/image?url=https%3A%2F%2Fv2.rudrakx.com%2F%2Fmedia%2Ffiler_public%2F93%2Fe9%2F93e9400e-953a-4039-b884-54f49179f7ed%2Fscientific-research-on-rudraksha.webp&w=3840&q=75',
     badge: 'Featured',
   },
   {
@@ -26,7 +26,7 @@ const posts = [
     excerpt: 'A step-by-step guide to Prana Pratishtha: the daily care ritual, monthly oil treatment, and the right mantras for your specific mukhi.',
     readTime: '4 min read',
     date: 'April 2026',
-    image: 'https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?auto=format&fit=crop&w=800&q=80',
+    image: 'https://rudrahouse.com/storage/uploads/product/5-mukhi-rudraksha-kantha-mala/5-mukhi-rudraksha-kantha-mala.jpeg',
     badge: null,
   },
   {
@@ -35,7 +35,7 @@ const posts = [
     excerpt: "Float test, copper test, X-ray analysis — a comprehensive buyer's guide to identifying adulterated and chemically treated beads in the market.",
     readTime: '6 min read',
     date: 'March 2026',
-    image: 'https://images.unsplash.com/photo-1516302350523-4a2b77b39054?auto=format&fit=crop&w=800&q=80',
+    image: 'https://www.mkhastrovastumlm.com/wp-content/uploads/2024/01/rudrasha.jpg',
     badge: 'Popular',
   },
 ];

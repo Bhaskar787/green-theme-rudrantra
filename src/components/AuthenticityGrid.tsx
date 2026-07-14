@@ -42,7 +42,7 @@ const galleryImages = [
     label: 'Siddha Mala Collection',
   },
   {
-    src: 'https://images.unsplash.com/photo-1516302350523-4a2b77b39054?auto=format&fit=crop&w=800&q=80',
+    src: 'https://wallpapercave.com/wp/wp2752142.jpg',
     label: 'Himalayan Origin',
   },
 ];

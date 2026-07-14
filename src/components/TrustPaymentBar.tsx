@@ -50,9 +50,9 @@ export function TrustPaymentBar() {
     <section className="relative bg-[#0a2218] border-y border-gold/20 overflow-hidden">
       {/* Payment methods marquee strip — single bordered bar, full width, medium height */}
       <div className="w-full ">
-        <div className="relative border-y border-gold/30 bg-[#f9f4f2] overflow-hidden shadow-sm">
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16 bg-gradient-to-r from-[#f9f4f2] to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16 bg-gradient-to-l from-[#f9f4f2] to-transparent z-10" />
+        <div className="relative border-y border-gold/30 bg-[#ffeacc] overflow-hidden shadow-sm">
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16 bg-gradient-to-r from-[#ffeacc] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16 bg-gradient-to-l from-[#ffeacc] to-transparent z-10" />
 
           <div className="flex animate-marquee whitespace-nowrap items-center py-3">
             {[...paymentMethods, ...paymentMethods].map((method, i) => (

@@ -17,7 +17,7 @@ const slides = [
     sub: 'Every bead ships with a GIA-process X-ray certification and full mukhi count report. Zero guesswork, complete peace of mind.',
     cta: 'See Our Guarantee',
     href: '#',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYeOKGOXzWvuwaJiW_FzwaWpQb_1i3D-yXXBxX_Fu0kgww3kiI5Dk9CnE&s=10',
+    image: 'https://as1.ftcdn.net/v2/jpg/09/74/62/96/1000_F_974629665_AOBh7xezMAcwDnDtGIT9Xy4I1JxElMAn.jpg',
   },
   {
     tag: 'Shravan Special — Live Now',
@@ -25,7 +25,7 @@ const slides = [
     sub: '1 through 14 Mukhi, naturally strung on red silk thread and energized in one sacred ceremony. The rarest offering in our collection.',
     cta: 'Shop Siddha Mala',
     href: '#',
-    image: 'https://static.where-e.com/South_Africa/Western_Cape_Province/City_Of_Cape_Town_Metropolitan_Municipality/Sacred-Rudraksha-Forest_13eb7d984e219617b59a5f250ace35d1.jpg',
+    image: 'https://hsj.com.np/uploads/0000/1/2026/01/01/pexels-aidun-10792604.jpg',
   },
 ];
 
