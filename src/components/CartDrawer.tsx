@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useCart } from '@/context/CartContext';
-import { X, ShoppingBag, Sparkles } from 'lucide-react';
-import { GiLotusFlower } from 'react-icons/gi';
+import { X, ShoppingBag, ShoppingCart, Sparkles } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
 
 export function CartDrawer() {
@@ -103,7 +102,7 @@ export function CartDrawer() {
         <div className="relative z-10 flex-1 overflow-y-auto p-6 bg-[#091a0f]/60">
           {items.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-cream-soft text-center animate-in fade-in zoom-in-95 duration-500">
-              <GiLotusFlower className="w-14 h-14 mb-4 text-gold/40" />
+              <ShoppingCart className="w-14 h-14 mb-4 text-gold/40" />
               <p className="font-heading text-lg mb-2">Your cart awaits its first bead</p>
               <p className="text-sm text-cream-soft/50 mb-6 max-w-[240px] italic">
                 ॐ नमः शिवाय — begin your journey with a Rudraksha chosen for your intention.
@@ -180,7 +179,7 @@ export function CartDrawer() {
               <ShoppingBag className="w-4 h-4" /> Proceed to Checkout
             </button>
             <p className="text-center text-[11px] text-cream-soft/40 font-body italic mt-4">
-              🙏 Namaste — every order is a small step on the path.
+              Namaste — every order is a small step on the path.
             </p>
           </div>
         )}
