@@ -85,44 +85,36 @@ export function RudrakshaGuide() {
               <div
                 key={m.n}
                 ref={(el) => { containerRefs.current[m.n] = el; }}
-                className="relative h-[420px] w-full" 
+                className={`relative w-full lg:h-[420px] ${isOpen ? 'h-auto' : 'h-[420px]'}`}
               >
-                {/* 1. Static Ghost Placeholder */}
-                <div className="absolute inset-0 bg-forest/30 border border-dashed border-gold/20 rounded-2xl -z-10" />
+                {/* 1. Static Ghost Placeholder (keeps desktop grid cell sized while card floats above it) */}
+                <div className="hidden lg:block absolute inset-0 bg-forest/30 border border-dashed border-gold/20 rounded-2xl -z-10" />
 
                 {/* 2. The Actual Card */}
                 <div
                   onClick={() => handleCardClick(m.n)}
-                  className={`absolute top-0 h-full bg-forest-light border rounded-2xl shadow-lg transition-all duration-500 ease-out overflow-hidden select-none cursor-pointer ${
-                    isOpen 
-                      ? 'w-[100%] lg:w-[215%] z-40 border-gold shadow-sacred-glow bg-forest' 
-                      : 'w-full z-10 border-gold/20 hover:border-gold/60'
+                  className={`relative lg:absolute lg:top-0 w-full bg-forest-light border rounded-2xl shadow-lg transition-all duration-500 ease-out overflow-hidden select-none cursor-pointer ${
+                    isOpen
+                      ? 'h-auto lg:h-full lg:w-[215%] z-40 border-gold shadow-sacred-glow bg-forest'
+                      : 'h-full z-10 border-gold/20 hover:border-gold/60'
                   } ${
-                    isOpen && expandDirection === 'left' 
-                      ? 'right-0 origin-right' 
-                      : 'left-0 origin-left'
+                    isOpen && expandDirection === 'left'
+                      ? 'lg:right-0 lg:origin-right'
+                      : 'lg:left-0 lg:origin-left'
                   }`}
                 >
                   <div className="p-5 h-full flex flex-col justify-between relative">
                     {/* Gold left accent when open */}
                     {isOpen && <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-gold-bright via-gold to-transparent" />}
 
-                    <div className="flex h-full gap-6">
+                    <div className={`flex h-full gap-6 ${isOpen ? 'flex-col lg:flex-row' : 'flex-col'}`}>
                       
                       {/* Left Block */}
-                      <div className={`${isOpen ? 'w-full lg:w-[45%] shrink-0' : 'w-full'} transition-all duration-300 flex flex-col justify-between h-full`}>
+                      <div className={`${isOpen ? 'w-full lg:w-[45%] shrink-0' : 'w-full'} transition-all duration-300 flex flex-col justify-between h-auto lg:h-full`}>
                         <div>
                           <div className="w-full h-44 rounded-xl overflow-hidden mb-5 border border-gold/20 relative group">
                             <img src={m.image} alt={`${m.n} Mukhi`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                             <div className="absolute inset-0 bg-forest-deep/20 mix-blend-multiply" />
-                            {isOpen && (
-                              <button 
-                                onClick={(e) => { e.stopPropagation(); setOpenId(null); }}
-                                className="absolute top-2 right-2 lg:hidden bg-forest-deep/80 p-1.5 rounded-full text-gold border border-gold/40"
-                              >
-                                <X className="w-4 h-4" />
-                              </button>
-                            )}
                           </div>
 
                           <div className="flex justify-between items-center mb-3">
@@ -148,9 +140,9 @@ export function RudrakshaGuide() {
                         )}
                       </div>
 
-                      {/* Right Block / Extra Details */}
+                      {/* Right Block / Extra Details — stacks below on mobile, side-by-side from lg up */}
                       {isOpen && (
-                        <div className="hidden lg:flex flex-col justify-between flex-1 border-l border-gold/20 pl-6 animate-fade-in relative">
+                        <div className="flex flex-col justify-between flex-1 border-t lg:border-t-0 lg:border-l border-gold/20 pt-6 lg:pt-0 lg:pl-6 animate-fade-in relative">
                           <div className="space-y-6">
                             <div className="flex justify-between items-start">
                               <div>
@@ -187,7 +179,7 @@ export function RudrakshaGuide() {
                             </div>
                           </div>
 
-                          <div className="text-[10px] font-heading uppercase tracking-widest text-gold/40 pt-3 border-t border-gold/10 text-center">
+                          <div className="text-[10px] font-heading uppercase tracking-widest text-gold/40 pt-3 border-t border-gold/10 text-center mt-4">
                             Click anywhere on card to close
                           </div>
                         </div>
