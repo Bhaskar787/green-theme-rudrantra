@@ -132,20 +132,20 @@ export function MenuDrawer() {
               </div>
             </div>
 
-            {/* Col 3: Featured & Social */}
-            <div className="hidden md:flex flex-col justify-between">
-              <div className="rounded-xl overflow-hidden relative group h-80 border border-[#D4AF37]/20">
+            {/* Col 3: Featured & Social — now visible on mobile too, just shorter */}
+            <div className="flex flex-col justify-between mt-4 md:mt-0">
+              <div className="rounded-xl overflow-hidden relative group h-48 md:h-80 border border-[#D4AF37]/20">
                 <img 
                   src="https://himalayarudraksh.online/cdn/shop/files/1-13-mukhi-shiv-shakti-rudraksha-mala-nepal-origin-499218.png?v=1750001216&width=3840" 
                   alt="Featured" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 opacity-80"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#091a0f] via-transparent to-transparent p-6 flex flex-col justify-end">
-                  <span className="text-[#D4AF37] text-xl mb-2">Explore the Siddha Mala</span>
+                  <span className="text-[#D4AF37] text-lg md:text-xl mb-2">Explore the Siddha Mala</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 mt-8">
+              <div className="flex items-center gap-4 mt-6 md:mt-8">
                 <a href="#" className="text-[#D4AF37]/60 hover:text-[#D4AF37] transition-colors"><Instagram className="w-5 h-5" /></a>
                 <a href="#" className="text-[#D4AF37]/60 hover:text-[#D4AF37] transition-colors"><Facebook className="w-5 h-5" /></a>
               </div>
