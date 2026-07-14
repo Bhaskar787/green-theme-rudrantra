@@ -29,6 +29,13 @@ export function Newsletter() {
 
   return (
     <section className="py-24 bg-forest-light relative overflow-hidden">
+      {/* OM Section Divider */}
+      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+      </div>
+
       {/* Himalayan misty peaks background */}
       <div 
         className="absolute inset-0 opacity-[0.7] bg-cover bg-center"

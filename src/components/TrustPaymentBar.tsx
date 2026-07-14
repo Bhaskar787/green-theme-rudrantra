@@ -78,6 +78,13 @@ export function TrustPaymentBar() {
         </div>
       </div>
 
+      {/* OM Divider — between payment loop bar and Store Rating */}
+      <div className="flex items-center justify-center gap-4 px-4 py-5">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+      </div>
+
       {/* Store rating */}
       <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col items-center text-center border-b border-gold/10">
         <span className="text-[11px] font-heading font-bold uppercase tracking-[0.3em] text-gold/60 mb-3">

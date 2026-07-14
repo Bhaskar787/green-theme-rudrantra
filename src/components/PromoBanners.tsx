@@ -84,6 +84,13 @@ export function PromoBanners() {
         }
       `}</style>
 
+      {/* OM Section Divider */}
+      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+      </div>
+
       {/* Background image: opacity changed to 0.4 for higher visibility */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden>
         <div

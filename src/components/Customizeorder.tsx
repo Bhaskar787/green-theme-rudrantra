@@ -133,6 +133,13 @@ export function CustomizeOrder() {
       {/* Astrological star field, planetary orbits & birth-chart motif */}
       <AstroBackground />
 
+      {/* OM Section Divider */}
+      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">

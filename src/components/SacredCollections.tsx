@@ -11,6 +11,13 @@ const collections = [
 export function SacredCollections() {
   return (
     <section className="py-24 bg-forest relative overflow-hidden">
+      {/* OM Section Divider */}
+      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+      </div>
+
       {/* Decorative top line */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-30" />
       

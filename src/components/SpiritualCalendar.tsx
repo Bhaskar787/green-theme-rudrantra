@@ -12,6 +12,13 @@ const events = [
 export function SpiritualCalendar() {
   return (
     <section className="py-20 md:py-28 bg-forest border-t border-gold/20 overflow-hidden relative">
+      {/* OM Section Divider */}
+      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+      </div>
+
       <div className="absolute top-0 right-0 w-1/2 h-full bg-mandala opacity-[0.03] pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

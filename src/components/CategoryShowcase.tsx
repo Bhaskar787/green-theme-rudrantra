@@ -1,6 +1,13 @@
 export function CategoryShowcase() {
   return (
     <section className="py-20 bg-forest-deep relative">
+      {/* OM Section Divider */}
+      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
+      </div>
+
       {/* Subtle star field overlay */}
       <div className="absolute inset-0 bg-stars opacity-10 pointer-events-none" />
 
@@ -28,7 +35,7 @@ export function CategoryShowcase() {
             <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/40 to-transparent opacity-90 group-hover:opacity-80 transition-opacity"></div>
             <div className="absolute bottom-8 left-8 right-8">
               <h3 className="font-display text-3xl text-gold mb-2 group-hover:text-gold-bright transition-colors">Rudraksha Bracelets</h3>
-              <p className="text-cream text-base font-body opacity-90">Everyday protection & balance</p>
+              <p className="text-cream text-base font-body opacity-90">Everyday protection &amp; balance</p>
             </div>
             {/* Hover inner border */}
             <div className="absolute inset-4 border border-gold/0 group-hover:border-gold/30 transition-colors duration-500 rounded-xl pointer-events-none" />
@@ -43,7 +50,7 @@ export function CategoryShowcase() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-forest-deep/40 to-transparent opacity-90 group-hover:opacity-80 transition-opacity"></div>
             <div className="absolute bottom-6 left-6 right-6">
-              <h3 className="font-display text-2xl text-gold group-hover:text-gold-bright transition-colors">Combination & Kawach</h3>
+              <h3 className="font-display text-2xl text-gold group-hover:text-gold-bright transition-colors">Combination &amp; Kawach</h3>
             </div>
             <div className="absolute inset-4 border border-gold/0 group-hover:border-gold/30 transition-colors duration-500 rounded-xl pointer-events-none" />
           </a>
