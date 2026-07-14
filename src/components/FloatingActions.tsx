@@ -63,6 +63,14 @@ export function FloatingActions() {
 
   return (
     <>
+      {/* Scoped keyframe for the gentle bob effect */}
+      <style>{`
+        @keyframes gentle-float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-3px); }
+        }
+      `}</style>
+
       {/* WhatsApp — fixed bottom-left */}
       <a
         href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
@@ -83,7 +91,9 @@ export function FloatingActions() {
           onClick={handleScrollToTop}
           aria-label="Scroll to top"
           className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gold/40 bg-forest-deep text-gold flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-gold hover:text-forest-deep shrink-0 ${
-            showScrollTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
+            showScrollTop
+              ? 'opacity-100 translate-y-0 pointer-events-auto animate-[gentle-float_2.2s_ease-in-out_infinite]'
+              : 'opacity-0 translate-y-4 pointer-events-none'
           }`}
         >
           <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />

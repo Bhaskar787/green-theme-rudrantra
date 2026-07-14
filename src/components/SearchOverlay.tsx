@@ -104,7 +104,7 @@ export function SearchOverlay() {
   const handleClose = () => setIsSearchOpen(false);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-24 md:pt-32 px-4">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 sm:pt-24 md:pt-32 px-3 sm:px-4">
       <div
         className={`absolute inset-0 bg-forest-deep/90 backdrop-blur-md transition-opacity duration-200 ${
           isClosing ? 'opacity-0' : 'opacity-100'
@@ -117,35 +117,35 @@ export function SearchOverlay() {
           isClosing ? 'opacity-0 scale-95' : 'opacity-100 scale-100 animate-in fade-in zoom-in-95'
         }`}
       >
-        <div className="flex items-center p-4 border-b border-gold/20">
-          <Search className="w-6 h-6 text-gold ml-2 shrink-0" />
+        <div className="flex items-center p-3 sm:p-4 border-b border-gold/20">
+          <Search className="w-5 h-5 md:w-6 md:h-6 text-gold ml-2 shrink-0" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search sacred rudraksha, mukhis, or intentions..."
-            className="flex-1 bg-transparent border-none text-cream text-lg md:text-xl px-4 py-2 focus:outline-none placeholder:text-cream/30 font-heading min-w-0"
+            className="flex-1 bg-transparent border-none text-cream text-base md:text-xl px-3 md:px-4 py-2 focus:outline-none placeholder:text-cream/30 font-heading min-w-0"
           />
           <button
             onClick={handleClose}
             aria-label="Close search"
             className="p-2 text-gold hover:text-gold-bright transition-colors rounded-full hover:bg-forest-light shrink-0"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5 md:w-6 md:h-6" />
           </button>
         </div>
 
         <div className="max-h-[60vh] overflow-y-auto">
           {query.trim() === '' ? (
-            <div className="p-6 bg-[#0d2415]/50">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-gold/60 mb-4">Popular Searches</h3>
+            <div className="p-5 sm:p-6 bg-[#0d2415]/50">
+              <h3 className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gold/60 mb-4">Popular Searches</h3>
               <div className="flex flex-wrap gap-2">
                 {POPULAR_SEARCHES.map((term) => (
                   <button
                     key={term}
                     onClick={() => setQuery(term)}
-                    className="px-3 py-1.5 rounded-full border border-gold/20 text-cream-soft text-sm hover:border-gold hover:text-gold transition-colors"
+                    className="px-3 py-1.5 rounded-full border border-gold/20 text-cream-soft text-xs sm:text-sm hover:border-gold hover:text-gold transition-colors"
                   >
                     {term}
                   </button>
@@ -153,23 +153,23 @@ export function SearchOverlay() {
               </div>
             </div>
           ) : results.length === 0 ? (
-            <div className="p-10 flex flex-col items-center text-center bg-[#0d2415]/50 animate-in fade-in duration-200">
-              <SearchX className="w-10 h-10 text-gold/40 mb-3" />
-              <p className="font-heading text-cream mb-1">No results for "{query}"</p>
-              <p className="text-sm text-cream-soft/50">Try a mukhi number, mala type, or an intention like "prosperity".</p>
+            <div className="p-8 md:p-10 flex flex-col items-center text-center bg-[#0d2415]/50 animate-in fade-in duration-200">
+              <SearchX className="w-8 h-8 md:w-10 md:h-10 text-gold/40 mb-3" />
+              <p className="font-heading text-cream mb-1 text-sm md:text-base">No results for "{query}"</p>
+              <p className="text-xs md:text-sm text-cream-soft/50">Try a mukhi number, mala type, or an intention like "prosperity".</p>
             </div>
           ) : (
-            <div className="p-4 bg-[#0d2415]/50 animate-in fade-in duration-200">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-gold/60 mb-3 px-2">
+            <div className="p-3 sm:p-4 bg-[#0d2415]/50 animate-in fade-in duration-200">
+              <h3 className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gold/60 mb-3 px-2">
                 {results.length} {results.length === 1 ? 'Result' : 'Results'}
               </h3>
               <div className="flex flex-col gap-1">
                 {results.map((product) => (
                   <button
                     key={product.id}
-                    className="flex items-center gap-4 p-2.5 rounded-xl hover:bg-forest-deep transition-colors text-left group"
+                    className="flex items-center gap-3 md:gap-4 p-2 rounded-xl hover:bg-forest-deep transition-colors text-left group"
                   >
-                    <div className="w-14 h-14 rounded-lg overflow-hidden border border-gold/20 shrink-0">
+                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg overflow-hidden border border-gold/20 shrink-0">
                       <img
                         src={product.image}
                         alt={product.name}
@@ -177,10 +177,10 @@ export function SearchOverlay() {
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-heading text-cream text-sm font-semibold truncate group-hover:text-gold transition-colors">
+                      <p className="font-heading text-cream text-xs md:text-sm font-semibold truncate group-hover:text-gold transition-colors">
                         {product.name}
                       </p>
-                      <p className="text-gold text-xs mt-0.5">{formatPrice(product.price)}</p>
+                      <p className="text-gold text-[10px] md:text-xs mt-0.5">{formatPrice(product.price)}</p>
                     </div>
                   </button>
                 ))}

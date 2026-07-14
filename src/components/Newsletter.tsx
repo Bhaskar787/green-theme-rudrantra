@@ -28,11 +28,11 @@ export function Newsletter() {
   };
 
   return (
-    <section className="py-24 bg-forest-light relative overflow-hidden">
+    <section className="py-14 sm:py-20 md:py-24 bg-forest-light relative overflow-hidden">
       {/* OM Section Divider */}
-      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+      <div className="flex items-center justify-center gap-3 sm:gap-4 px-4 pt-0 pb-6 sm:pb-8 relative z-10">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
-        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <span className="text-gold text-xl sm:text-2xl font-serif opacity-80">ॐ</span>
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
       </div>
 
@@ -44,50 +44,50 @@ export function Newsletter() {
       <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/45 via-forest-deep/10 to-forest-deep/30 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="bg-forest border border-gold/30 rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12 relative">
+        <div className="bg-forest border border-gold/30 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12 relative">
           
           {/* Giant decorative OM watermark */}
-          <div className="absolute -top-10 -right-10 text-[300px] text-gold/5 font-serif select-none pointer-events-none leading-none">
+          <div className="absolute -top-6 -right-6 sm:-top-10 sm:-right-10 text-[160px] sm:text-[220px] md:text-[300px] text-gold/5 font-serif select-none pointer-events-none leading-none">
             ॐ
           </div>
 
           {/* Left/Top Content & Form Area */}
-          <div className="p-8 md:p-12 lg:p-16 lg:col-span-7 flex flex-col justify-between relative z-10 bg-forest-deep/80 backdrop-blur border-r border-gold/10">
+          <div className="p-6 sm:p-8 md:p-12 lg:p-16 lg:col-span-7 flex flex-col justify-between relative z-10 bg-forest-deep/80 backdrop-blur border-r border-gold/10">
             <div>
-              <span className="flex items-center gap-2 text-[10px] md:text-xs font-heading font-bold uppercase tracking-widest text-gold mb-6">
-                <span className="w-8 h-px bg-gold"></span>
+              <span className="flex items-center gap-2 text-[9px] sm:text-[10px] md:text-xs font-heading font-bold uppercase tracking-widest text-gold mb-4 sm:mb-6">
+                <span className="w-6 sm:w-8 h-px bg-gold"></span>
                 Parivar · Our Sacred Circle
               </span>
-              <h2 className="text-4xl md:text-5xl font-display text-gold-gradient tracking-tight leading-tight mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display text-gold-gradient tracking-tight leading-tight mb-4 sm:mb-6">
                 Join Our Spiritual Circle
               </h2>
-              <p className="text-cream/80 font-body text-base md:text-lg leading-relaxed max-w-xl mb-12">
+              <p className="text-cream/80 font-body text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mb-8 sm:mb-12">
                 Receive updates on rare bead arrivals, auspicious days for energization, and exclusive insights from
                 our Vedic scholars — a quiet correspondence rooted in tradition, sent only when it truly matters.
               </p>
 
               {/* Dynamic Subscription State Area */}
               {submitted ? (
-                <div className="bg-gold/10 p-8 rounded-2xl border border-gold/30 max-w-md animate-in zoom-in duration-500 shadow-sacred-glow">
-                  <GiFlame className="w-10 h-10 text-gold mb-4" />
-                  <span className="block text-2xl font-display text-gold mb-2">
+                <div className="bg-gold/10 p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-gold/30 max-w-md animate-in zoom-in duration-500 shadow-sacred-glow">
+                  <GiFlame className="w-8 h-8 sm:w-10 sm:h-10 text-gold mb-3 sm:mb-4" />
+                  <span className="block text-lg sm:text-xl md:text-2xl font-display text-gold mb-2">
                     Namaste! You've joined our sacred circle 🙏
                   </span>
-                  <span className="block text-sm font-body text-cream-soft/90 leading-relaxed">
+                  <span className="block text-xs sm:text-sm font-body text-cream-soft/90 leading-relaxed">
                     Watch your inbox for our next Panchang update and rare bead arrival notification.
                   </span>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md relative">
+                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md relative">
                   <input
                     type="email"
                     required
                     placeholder="Enter your email address"
-                    className="flex-1 px-6 py-4 text-sm font-body rounded-full border border-gold/40 bg-forest/50 placeholder:text-cream/40 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold text-cream shadow-inner"
+                    className="flex-1 px-5 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-body rounded-full border border-gold/40 bg-forest/50 placeholder:text-cream/40 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold text-cream shadow-inner"
                   />
                   <button
                     type="submit"
-                    className="px-8 py-4 bg-gradient-to-r from-gold to-gold-soft text-forest-deep font-heading font-bold text-xs uppercase tracking-widest rounded-full transition-all hover:shadow-sacred-glow whitespace-nowrap"
+                    className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-gold to-gold-soft text-forest-deep font-heading font-bold text-[10px] sm:text-xs uppercase tracking-widest rounded-full transition-all hover:shadow-sacred-glow whitespace-nowrap"
                   >
                     Subscribe
                   </button>
@@ -95,7 +95,7 @@ export function Newsletter() {
               )}
             </div>
 
-            <div className="mt-16 pt-8 border-t border-gold/10 flex flex-col sm:flex-row gap-6 sm:items-center text-xs font-heading tracking-widest text-gold/60 uppercase">
+            <div className="mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-gold/10 flex flex-col sm:flex-row gap-4 sm:gap-6 sm:items-center text-[10px] sm:text-xs font-heading tracking-widest text-gold/60 uppercase">
               <span>Trusted by 12,000+ seekers</span>
               <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-gold/30"></span>
               <span>Cancel anytime</span>
@@ -103,24 +103,24 @@ export function Newsletter() {
           </div>
 
           {/* Right Panel - Offerings */}
-          <div className="lg:col-span-5 p-8 md:p-12 relative z-10 flex flex-col justify-center bg-forest/60">
-            <div className="space-y-6">
+          <div className="lg:col-span-5 p-6 sm:p-8 md:p-12 relative z-10 flex flex-col justify-center bg-forest/60">
+            <div className="space-y-4 sm:space-y-6">
               {offerings.map((o) => {
                 const IconComponent = o.icon;
                 return (
                   <div
                     key={o.title}
-                    className="bg-forest-deep border border-gold/20 rounded-2xl p-6 shadow-md group hover:border-gold/50 transition-all duration-300"
+                    className="bg-forest-deep border border-gold/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-md group hover:border-gold/50 transition-all duration-300"
                   >
-                    <div className="flex items-start gap-5">
-                      <span className="w-12 h-12 rounded-full border border-gold/30 bg-forest flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-forest transition-colors shrink-0 shadow-inner">
-                        <IconComponent className="w-6 h-6" />
+                    <div className="flex items-start gap-3 sm:gap-5">
+                      <span className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gold/30 bg-forest flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-forest transition-colors shrink-0 shadow-inner">
+                        <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
                       </span>
                       <div>
-                        <h3 className="font-display text-xl text-gold mb-2">
+                        <h3 className="font-display text-base sm:text-lg md:text-xl text-gold mb-1.5 sm:mb-2">
                           {o.title}
                         </h3>
-                        <p className="text-sm font-body text-cream/70 leading-relaxed">
+                        <p className="text-xs sm:text-sm font-body text-cream/70 leading-relaxed">
                           {o.desc}
                         </p>
                       </div>

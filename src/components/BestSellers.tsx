@@ -152,11 +152,11 @@ export function BestSellers() {
   }, [activeTab]);
 
   return (
-    <section className="py-24 bg-forest-deep relative">
+    <section className="py-14 sm:py-20 md:py-24 bg-forest-deep relative">
       {/* OM Section Divider */}
-      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+      <div className="flex items-center justify-center gap-3 sm:gap-4 px-4 pt-0 pb-6 sm:pb-8 relative z-10">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
-        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <span className="text-gold text-xl sm:text-2xl font-serif opacity-80">ॐ</span>
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
       </div>
 
@@ -166,15 +166,16 @@ export function BestSellers() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header Title Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
-            <span className="text-[10px] md:text-xs font-heading font-bold uppercase tracking-[0.2em] text-gold bg-gold/5 border border-gold/20 px-4 py-1.5 rounded-full inline-block mb-4">
+            <span className="text-[9px] sm:text-[10px] md:text-xs font-heading font-bold uppercase tracking-[0.2em] text-gold bg-gold/5 border border-gold/20 px-3.5 sm:px-4 py-1.5 rounded-full inline-block mb-3 sm:mb-4">
               Sacred Offerings
             </span>
-            <h2 className="text-4xl md:text-5xl font-display text-gold-gradient tracking-tight mt-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display text-gold-gradient tracking-tight mt-2">
               Trending Now
             </h2>
           </div>
+
           <a
             href="#"
             className="hidden md:inline-flex items-center gap-2 text-gold font-heading font-bold uppercase tracking-wider text-sm hover:text-gold-bright transition-colors group"
@@ -185,13 +186,13 @@ export function BestSellers() {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex overflow-x-auto hide-scrollbar border-b border-gold/20 mb-10 -mx-4 px-4 md:mx-0 md:px-0 md:justify-center">
-          <div className="flex gap-4 pb-4 whitespace-nowrap">
+        <div className="flex overflow-x-auto hide-scrollbar border-b border-gold/20 mb-8 sm:mb-10 -mx-4 px-4 md:mx-0 md:px-0 md:justify-center">
+          <div className="flex gap-2.5 sm:gap-4 pb-3 sm:pb-4 whitespace-nowrap">
             {filterTabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-2.5 rounded-full text-xs md:text-sm font-heading font-semibold tracking-widest transition-all border ${
+                className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs md:text-sm font-heading font-semibold tracking-widest transition-all border ${
                   activeTab === tab
                     ? 'bg-gold text-forest-deep border-gold shadow-sacred-glow'
                     : 'bg-forest text-cream/70 border-gold/20 hover:border-gold/50 hover:text-gold'
@@ -204,7 +205,7 @@ export function BestSellers() {
         </div>
 
         {/* Product Grid System */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8">
           {filtered.map((product) => {
             const isSaved = isInWishlist(product.id);
             const discount = product.originalPrice
@@ -213,10 +214,10 @@ export function BestSellers() {
             return (
               <div
                 key={product.id}
-                className="group relative flex flex-col bg-forest border border-gold/20 rounded-xl p-4 hover:border-gold hover:shadow-sacred-glow transition-all duration-500"
+                className="group relative flex flex-col bg-forest border border-gold/20 rounded-lg sm:rounded-xl p-2.5 sm:p-4 hover:border-gold hover:shadow-sacred-glow transition-all duration-500"
               >
                 {/* Image Container */}
-                <div className="relative aspect-square rounded-lg overflow-hidden border border-gold/10 mb-5">
+                <div className="relative aspect-square rounded-md sm:rounded-lg overflow-hidden border border-gold/10 mb-3 sm:mb-5">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -227,14 +228,14 @@ export function BestSellers() {
                   <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] pointer-events-none" />
 
                   {/* Badges */}
-                  <div className="absolute top-3 left-3 flex flex-col gap-2 items-start">
+                  <div className="absolute top-1.5 left-1.5 sm:top-3 sm:left-3 flex flex-col gap-1 sm:gap-2 items-start">
                     {product.badge && (
-                      <span className="bg-crimson text-white text-[10px] font-heading font-bold uppercase tracking-widest px-2.5 py-1 rounded shadow-md border border-crimson/50">
+                      <span className="bg-crimson text-white text-[8px] sm:text-[10px] font-heading font-bold uppercase tracking-widest px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded shadow-md border border-crimson/50">
                         {product.badge}
                       </span>
                     )}
                     {discount > 0 && (
-                      <span className="bg-gold text-forest-deep text-[10px] font-heading font-bold uppercase tracking-widest px-2.5 py-1 rounded shadow-md">
+                      <span className="bg-gold text-forest-deep text-[8px] sm:text-[10px] font-heading font-bold uppercase tracking-widest px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded shadow-md">
                         {discount}% Off
                       </span>
                     )}
@@ -246,10 +247,10 @@ export function BestSellers() {
                       e.preventDefault();
                       toggleWishlist(product);
                     }}
-                    className="absolute top-3 right-3 w-9 h-9 bg-forest-deep/80 backdrop-blur border border-gold/30 rounded-full flex items-center justify-center text-gold hover:bg-gold hover:text-forest-deep transition-all shadow-lg z-10"
+                    className="absolute top-1.5 right-1.5 sm:top-3 sm:right-3 w-7 h-7 sm:w-9 sm:h-9 bg-forest-deep/80 backdrop-blur border border-gold/30 rounded-full flex items-center justify-center text-gold hover:bg-gold hover:text-forest-deep transition-all shadow-lg z-10"
                   >
                     <Heart
-                      className={`w-4 h-4 transition-transform ${
+                      className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform ${
                         isSaved ? 'fill-gold text-gold scale-110' : ''
                       }`}
                     />
@@ -267,46 +268,46 @@ export function BestSellers() {
                 </div>
 
                 {/* Content Details Area */}
-                <div className="flex flex-col flex-1 px-1">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-1">
+                <div className="flex flex-col flex-1 px-0.5 sm:px-1">
+                  <div className="flex items-center justify-between mb-2 sm:mb-3 flex-wrap gap-y-1">
+                    <div className="flex items-center gap-0.5 sm:gap-1">
                       {[...Array(5)].map((_, i) => (
                         <GiStarSattelites
                           key={i}
-                          className={`w-3.5 h-3.5 ${
+                          className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${
                             i < Math.round(product.rating) ? 'text-gold' : 'text-forest-light'
                           }`}
                         />
                       ))}
-                      <span className="text-[10px] font-body text-cream/50 ml-1">({product.reviews})</span>
+                      <span className="text-[9px] sm:text-[10px] font-body text-cream/50 ml-1">({product.reviews})</span>
                     </div>
-                    <span className="text-[10px] font-heading font-bold text-cream/60 uppercase tracking-widest border border-cream/20 px-2 py-0.5 rounded">
+                    <span className="text-[8px] sm:text-[10px] font-heading font-bold text-cream/60 uppercase tracking-widest border border-cream/20 px-1.5 sm:px-2 py-0.5 rounded">
                       {product.origin}
                     </span>
                   </div>
 
-                  <h3 className="font-display text-lg text-gold font-semibold mb-2 line-clamp-2 leading-tight">
+                  <h3 className="font-display text-sm sm:text-base md:text-lg text-gold font-semibold mb-1.5 sm:mb-2 line-clamp-2 leading-tight">
                     {product.name}
                   </h3>
-                  <p className="text-sm font-body text-cream-soft/70 line-clamp-2 mb-4 flex-1">
+                  <p className="text-xs sm:text-sm font-body text-cream-soft/70 line-clamp-2 mb-3 sm:mb-4 flex-1">
                     {product.desc}
                   </p>
 
-                  <div className="flex items-baseline gap-3 mt-auto pt-4 border-t border-gold/10">
-                    <span className="font-display text-xl font-bold text-cream">
+                  <div className="flex items-baseline gap-2 sm:gap-3 mt-auto pt-3 sm:pt-4 border-t border-gold/10">
+                    <span className="font-display text-base sm:text-lg md:text-xl font-bold text-cream">
                       {formatPrice(product.price)}
                     </span>
                     {product.originalPrice && (
-                      <span className="text-sm font-body text-cream/40 line-through">
+                      <span className="text-xs sm:text-sm font-body text-cream/40 line-through">
                         {formatPrice(product.originalPrice)}
                       </span>
                     )}
                   </div>
 
                   {/* Lab Certified Strip */}
-                  <div className="mt-4 bg-gold/10 border border-gold/20 py-1.5 px-3 rounded flex items-center justify-center gap-2">
-                    <img src="https://img.icons8.com/color/48/warranty.png" alt="cert" className="w-4 h-4 filter brightness-200 sepia opacity-80" />
-                    <span className="text-[10px] font-heading font-bold text-gold uppercase tracking-widest">
+                  <div className="mt-3 sm:mt-4 bg-gold/10 border border-gold/20 py-1 sm:py-1.5 px-2 sm:px-3 rounded flex items-center justify-center gap-1.5 sm:gap-2">
+                    <img src="https://img.icons8.com/color/48/warranty.png" alt="cert" className="w-3.5 h-3.5 sm:w-4 sm:h-4 filter brightness-200 sepia opacity-80" />
+                    <span className="text-[8px] sm:text-[10px] font-heading font-bold text-gold uppercase tracking-widest">
                       Lab Certified
                     </span>
                   </div>
@@ -314,7 +315,7 @@ export function BestSellers() {
                   {/* Mobile Add Button */}
                   <button
                     onClick={() => addToCart(product)}
-                    className="mt-3 w-full py-3 border border-gold text-gold text-xs font-heading font-bold uppercase tracking-widest rounded hover:bg-gold hover:text-forest transition-colors lg:hidden"
+                    className="mt-2.5 sm:mt-3 w-full py-2.5 sm:py-3 border border-gold text-gold text-[11px] sm:text-xs font-heading font-bold uppercase tracking-widest rounded hover:bg-gold hover:text-forest transition-colors lg:hidden"
                   >
                     Add to Cart
                   </button>
@@ -325,7 +326,7 @@ export function BestSellers() {
         </div>
 
         {/* Mobile Sub Anchor Link */}
-        <div className="flex justify-center mt-12 md:hidden">
+        <div className="flex justify-center mt-8 sm:mt-12 md:hidden">
           <a
             href="#"
             className="text-gold font-heading font-bold uppercase tracking-widest text-xs border-b border-gold/30 pb-1"

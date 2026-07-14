@@ -58,48 +58,48 @@ export function MenuDrawer() {
       >
 
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-[#D4AF37]/10">
-          <span className="font-display text-3xl text-[#D4AF37] tracking-widest">Rudrantra</span>
+        <div className="flex items-center justify-between p-5 md:p-6 border-b border-[#D4AF37]/10">
+          <span className="font-display text-2xl sm:text-3xl text-[#D4AF37] tracking-widest">Rudrantra</span>
           <button
             onClick={() => setIsMenuOpen(false)}
             aria-label="Close menu"
             className="p-2 text-[#D4AF37]/70 hover:text-[#D4AF37] hover:rotate-90 transition-all duration-300"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-6 md:p-12 relative">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+        <div className="flex-1 overflow-y-auto p-5 md:p-12 relative">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative z-10">
             
             {/* Col 1: Shop */}
-            <div className="flex flex-col gap-8">
-              <h3 className="text-xs font-bold tracking-widest text-[#D4AF37]/50 uppercase flex items-center gap-2">
+            <div className="flex flex-col gap-6 md:gap-8">
+              <h3 className="text-[10px] md:text-xs font-bold tracking-widest text-[#D4AF37]/50 uppercase flex items-center gap-2">
                 <span className="w-4 h-px bg-[#D4AF37]/30"></span> Shop
               </h3>
-              <nav className="flex flex-col gap-5">
+              <nav className="flex flex-col gap-3 md:gap-5">
                 {['Pooja', 'Rudraksha Bracelet', 'Japa Mala', 'Combination', 'Shaligram', 'Murtis & Yantra'].map((item, i) => (
                   <Link
                     key={item}
                     href="#"
                     onClick={() => setIsMenuOpen(false)}
                     style={{ animationDelay: `${i * 50}ms` }}
-                    className="text-2xl text-white/90 hover:text-[#D4AF37] transition-colors group flex items-center justify-between border-b border-white/5 pb-3 animate-in fade-in slide-in-from-left-2 fill-mode-both duration-500"
+                    className="text-xl sm:text-2xl text-white/90 hover:text-[#D4AF37] transition-colors group flex items-center justify-between border-b border-white/5 pb-2 md:pb-3 animate-in fade-in slide-in-from-left-2 fill-mode-both duration-500"
                   >
                     {item}
-                    <ChevronRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-[#D4AF37]" />
+                    <ChevronRight className="w-4 h-4 md:w-5 md:h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-[#D4AF37]" />
                   </Link>
                 ))}
               </nav>
             </div>
 
             {/* Col 2: Guidance & Company */}
-            <div className="flex flex-col gap-12">
-              <div className="flex flex-col gap-6">
-                <h3 className="text-xs font-bold tracking-widest text-[#D4AF37]/50 uppercase flex items-center gap-2">
+            <div className="flex flex-col gap-8 md:gap-12">
+              <div className="flex flex-col gap-4 md:gap-6">
+                <h3 className="text-[10px] md:text-xs font-bold tracking-widest text-[#D4AF37]/50 uppercase flex items-center gap-2">
                   <span className="w-4 h-px bg-[#D4AF37]/30"></span> Guidance & Trust
                 </h3>
-                <nav className="flex flex-col gap-4">
+                <nav className="flex flex-col gap-3 md:gap-4 text-sm md:text-base">
                   {['Authenticity', 'Book Consultation', 'Custom Build', 'Read our Story'].map((link) => (
                     <Link
                       key={link}
@@ -113,11 +113,11 @@ export function MenuDrawer() {
                 </nav>
               </div>
 
-              <div className="flex flex-col gap-6">
-                <h3 className="text-xs font-bold tracking-widest text-[#D4AF37]/50 uppercase flex items-center gap-2">
+              <div className="flex flex-col gap-4 md:gap-6">
+                <h3 className="text-[10px] md:text-xs font-bold tracking-widest text-[#D4AF37]/50 uppercase flex items-center gap-2">
                   <span className="w-4 h-px bg-[#D4AF37]/30"></span> Company
                 </h3>
-                <nav className="flex flex-col gap-4">
+                <nav className="flex flex-col gap-3 md:gap-4 text-sm md:text-base">
                   {['About Us', 'Contact', 'Shipping & Returns', 'FAQ'].map((link) => (
                     <Link
                       key={link}
@@ -132,16 +132,16 @@ export function MenuDrawer() {
               </div>
             </div>
 
-            {/* Col 3: Featured & Social — now visible on mobile too, just shorter */}
+            {/* Col 3: Featured & Social */}
             <div className="flex flex-col justify-between mt-4 md:mt-0">
-              <div className="rounded-xl overflow-hidden relative group h-48 md:h-80 border border-[#D4AF37]/20">
+              <div className="rounded-xl overflow-hidden relative group h-40 md:h-80 border border-[#D4AF37]/20">
                 <img 
                   src="https://himalayarudraksh.online/cdn/shop/files/1-13-mukhi-shiv-shakti-rudraksha-mala-nepal-origin-499218.png?v=1750001216&width=3840" 
                   alt="Featured" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 opacity-80"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#091a0f] via-transparent to-transparent p-6 flex flex-col justify-end">
-                  <span className="text-[#D4AF37] text-lg md:text-xl mb-2">Explore the Siddha Mala</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#091a0f] via-transparent to-transparent p-4 md:p-6 flex flex-col justify-end">
+                  <span className="text-[#D4AF37] text-base md:text-xl mb-1 md:mb-2">Explore the Siddha Mala</span>
                 </div>
               </div>
 

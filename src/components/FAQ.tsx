@@ -106,7 +106,7 @@ export function FAQ() {
   }, [measure, filtered.length]);
 
   return (
-    <section className="py-24 bg-forest-deep relative">
+    <section className="py-14 sm:py-20 md:py-24 bg-forest-deep relative">
       <style>{`
         @keyframes faq-rise {
           from { opacity: 0; transform: translateY(18px) scale(0.98); }
@@ -133,42 +133,42 @@ export function FAQ() {
       <div className="absolute inset-0 bg-stars opacity-10 pointer-events-none" />
 
       {/* OM Section Divider */}
-      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+      <div className="flex items-center justify-center gap-3 sm:gap-4 px-4 pt-0 pb-6 sm:pb-8 relative z-10">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
-        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <span className="text-gold text-xl sm:text-2xl font-serif opacity-80">ॐ</span>
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-10">
-        <div className="text-center mb-12 max-w-2xl mx-auto">
-          <span className="inline-flex items-center gap-2 text-[10px] font-heading font-bold uppercase tracking-widest text-gold border border-gold/30 bg-gold/5 px-5 py-2 rounded-full mb-6">
-            <GiLotusFlower className="w-3.5 h-3.5" /> Common Questions
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto">
+          <span className="inline-flex items-center gap-2 text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-widest text-gold border border-gold/30 bg-gold/5 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6">
+            <GiLotusFlower className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> Common Questions
           </span>
-          <h2 className="font-display text-4xl md:text-5xl text-gold-gradient tracking-tight leading-tight mb-6">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gold-gradient tracking-tight leading-tight mb-4 sm:mb-6 px-2">
             Frequently Asked Questions
           </h2>
-          <p className="font-body text-cream/60 text-lg leading-relaxed">
+          <p className="font-body text-cream/60 text-sm sm:text-base md:text-lg leading-relaxed px-2">
             Everything a sincere seeker needs to know before making their sacred choice.
           </p>
         </div>
 
-        <div className="relative max-w-lg mx-auto mb-8">
+        <div className="relative max-w-lg mx-auto mb-6 sm:mb-8">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-cream/40" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search a question, e.g. shipping, mukhi, care..."
-            className="w-full pl-11 pr-4 py-3 rounded-full border border-gold/20 bg-forest text-sm font-body text-cream placeholder:text-cream/30 focus:outline-none focus:border-gold transition-colors"
+            className="w-full pl-11 pr-4 py-2.5 sm:py-3 rounded-full border border-gold/20 bg-forest text-xs sm:text-sm font-body text-cream placeholder:text-cream/30 focus:outline-none focus:border-gold transition-colors"
           />
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-xs font-heading font-bold uppercase tracking-widest border transition-all duration-300 ${
+              className={`px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-heading font-bold uppercase tracking-widest border transition-all duration-300 ${
                 activeCategory === cat
                   ? 'bg-gold text-forest-deep border-gold shadow-[0_0_15px_rgba(201,151,58,0.3)]'
                   : 'text-gold/70 border-gold/30 hover:border-gold hover:text-gold'
@@ -179,12 +179,12 @@ export function FAQ() {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-[1fr_300px] gap-10 items-start">
+        <div className="grid md:grid-cols-[1fr_300px] gap-6 sm:gap-8 md:gap-10 items-start">
           {/* IMPORTANT: no `overflow-hidden` on any ancestor of the sticky items,
               otherwise position:sticky silently breaks. */}
-          <div ref={listRef} className="flex flex-col gap-3 relative">
+          <div ref={listRef} className="flex flex-col gap-2.5 sm:gap-3 relative">
             {filtered.length === 0 && (
-              <div className="text-center py-16 text-cream/50 border border-dashed border-gold/20 rounded-2xl">
+              <div className="text-center py-12 sm:py-16 text-cream/50 border border-dashed border-gold/20 rounded-2xl text-sm sm:text-base px-4">
                 No questions match "{query}". Try a different search term, or ask us directly.
               </div>
             )}
@@ -249,10 +249,10 @@ export function FAQ() {
                       id={buttonId}
                       aria-expanded={isOpen}
                       aria-controls={panelId}
-                      className="w-full flex items-center gap-4 justify-between px-6 py-5 text-left relative z-10 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2"
+                      className="w-full flex items-center gap-3 sm:gap-4 justify-between px-4 sm:px-6 py-4 sm:py-5 text-left relative z-10 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2"
                       onClick={() => setOpenIndex(isOpen ? null : faq.originalIndex)}
                     >
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-3 sm:gap-4">
                         <span
                           className={`hidden sm:flex w-9 h-9 rounded-full items-center justify-center shrink-0 transition-all duration-300 relative ${
                             isOpen ? 'bg-gold text-forest-deep scale-110 faq-bead-active' : 'bg-gold/10 text-gold'
@@ -260,12 +260,12 @@ export function FAQ() {
                         >
                           <Icon className="w-4 h-4" />
                         </span>
-                        <span className={`font-heading text-base leading-snug transition-colors duration-300 ${isOpen ? 'text-gold' : 'text-cream'}`}>
+                        <span className={`font-heading text-sm sm:text-base leading-snug transition-colors duration-300 ${isOpen ? 'text-gold' : 'text-cream'}`}>
                           {faq.q}
                         </span>
                       </div>
                       <ChevronDown
-                        className={`w-5 h-5 text-gold transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] shrink-0 ${isOpen ? 'rotate-180' : ''}`}
+                        className={`w-4 h-4 sm:w-5 sm:h-5 text-gold transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] shrink-0 ${isOpen ? 'rotate-180' : ''}`}
                       />
                     </button>
 
@@ -279,11 +279,11 @@ export function FAQ() {
                     >
                       <div className="overflow-hidden">
                         <div
-                          className="px-6 pb-6 sm:pl-[70px] transition-transform duration-300 ease-out"
+                          className="px-4 sm:px-6 pb-4 sm:pb-6 sm:pl-[70px] transition-transform duration-300 ease-out"
                           style={{ transform: isOpen ? 'translateY(0)' : 'translateY(-6px)' }}
                         >
-                          <div className="h-px bg-gold/15 mb-4" />
-                          <p className="font-body text-cream/70 text-base leading-relaxed">{faq.a}</p>
+                          <div className="h-px bg-gold/15 mb-3 sm:mb-4" />
+                          <p className="font-body text-cream/70 text-sm sm:text-base leading-relaxed">{faq.a}</p>
                         </div>
                       </div>
                     </div>
@@ -299,21 +299,21 @@ export function FAQ() {
           </div>
 
           <aside className="md:sticky md:top-24 md:self-start">
-            <div className="bg-forest border border-gold/30 rounded-3xl p-6 md:p-8 flex flex-col gap-6 shadow-xl">
+            <div className="bg-forest border border-gold/30 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 flex flex-col gap-5 sm:gap-6 shadow-xl">
               <div className="flex flex-col gap-2">
-                <div className="w-11 h-11 rounded-full bg-gold/15 flex items-center justify-center mb-2">
-                  <MessageCircle className="w-5 h-5 text-gold" />
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gold/15 flex items-center justify-center mb-2">
+                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
                 </div>
-                <h3 className="font-display text-xl text-gold mb-1">Need personal guidance?</h3>
-                <p className="font-body text-cream/60 text-sm leading-relaxed">
+                <h3 className="font-display text-lg sm:text-xl text-gold mb-1">Need personal guidance?</h3>
+                <p className="font-body text-cream/60 text-xs sm:text-sm leading-relaxed">
                   Our resident Vedic scholars and gemstone experts are available to clarify your spiritual queries. We typically respond within 3–4 business hours.
                 </p>
               </div>
               <div className="flex flex-col gap-3 pt-4 border-t border-gold/15">
-                <a href="tel:+919876543210" className="flex items-center gap-3 text-sm font-body text-cream hover:text-gold transition-colors">
+                <a href="tel:+919876543210" className="flex items-center gap-3 text-xs sm:text-sm font-body text-cream hover:text-gold transition-colors">
                   <Phone className="w-4 h-4 text-gold shrink-0" /> +91 98765 43210
                 </a>
-                <p className="text-[10px] text-cream/40 uppercase tracking-widest pl-7">
+                <p className="text-[9px] sm:text-[10px] text-cream/40 uppercase tracking-widest pl-7">
                   Available Mon-Sat, 10am - 6pm IST
                 </p>
               </div>
@@ -322,13 +322,13 @@ export function FAQ() {
                   href="https://wa.me/919876543210"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-3 bg-[#25D366] text-white text-sm font-heading font-bold uppercase tracking-wider rounded-xl text-center hover:shadow-[0_0_20px_rgba(37,211,102,0.4)] transition-all"
+                  className="w-full py-2.5 sm:py-3 bg-[#25D366] text-white text-xs sm:text-sm font-heading font-bold uppercase tracking-wider rounded-xl text-center hover:shadow-[0_0_20px_rgba(37,211,102,0.4)] transition-all"
                 >
                   Message on WhatsApp
                 </a>
                 <a
                   href="#"
-                  className="w-full py-3 border border-gold/30 text-gold text-sm font-heading font-bold uppercase tracking-wider rounded-xl text-center hover:border-gold hover:bg-gold/5 transition-colors"
+                  className="w-full py-2.5 sm:py-3 border border-gold/30 text-gold text-xs sm:text-sm font-heading font-bold uppercase tracking-wider rounded-xl text-center hover:border-gold hover:bg-gold/5 transition-colors"
                 >
                   Book Free Consultation
                 </a>

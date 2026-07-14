@@ -11,11 +11,11 @@ export function RudrakshaGuide() {
   const previewMukhis = mukhis.slice(0, PREVIEW_COUNT);
 
   return (
-    <section className="py-24 bg-forest-deep min-h-screen relative overflow-hidden">
+    <section className="py-14 sm:py-20 md:py-24 bg-forest-deep min-h-screen relative overflow-hidden">
       {/* OM Section Divider */}
-      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+      <div className="flex items-center justify-center gap-3 sm:gap-4 px-4 pt-0 pb-6 sm:pb-8 relative z-10">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
-        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <span className="text-gold text-xl sm:text-2xl font-serif opacity-80">ॐ</span>
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
       </div>
 
@@ -24,14 +24,14 @@ export function RudrakshaGuide() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        <div className="text-center mb-20 max-w-3xl mx-auto">
-          <span className="text-[10px] md:text-xs font-heading font-bold uppercase tracking-widest text-gold bg-gold/5 border border-gold/30 px-5 py-2 rounded-full inline-block mb-6 shadow-[0_0_15px_rgba(201,151,58,0.2)]">
+        <div className="text-center mb-10 sm:mb-14 md:mb-20 max-w-3xl mx-auto">
+          <span className="text-[9px] sm:text-[10px] md:text-xs font-heading font-bold uppercase tracking-widest text-gold bg-gold/5 border border-gold/30 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full inline-block mb-4 sm:mb-6 shadow-[0_0_15px_rgba(201,151,58,0.2)]">
             Sacred Knowledge
           </span>
-          <h2 className="text-4xl md:text-5xl font-display text-gold-gradient tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display text-gold-gradient tracking-tight leading-tight px-2">
             The Language of Mukhi
           </h2>
-          <p className="text-cream/80 font-body text-lg leading-relaxed mt-6">
+          <p className="text-cream/80 font-body text-sm sm:text-base md:text-lg leading-relaxed mt-4 sm:mt-6 px-2">
             Explore the metaphysical signatures, ruling cosmic forces, and energetic applications behind each divine configuration as described in the Shiva Purana.
           </p>
         </div>
@@ -39,13 +39,13 @@ export function RudrakshaGuide() {
         <MukhiCardGrid items={previewMukhis} />
 
         {/* View All CTA */}
-        <div className="flex justify-center mt-16">
+        <div className="flex justify-center mt-10 sm:mt-12 md:mt-16">
           <Link
             href="/mukhi-guide"
-            className="group inline-flex items-center gap-3 font-heading font-bold uppercase tracking-widest text-sm text-forest-deep bg-gradient-to-r from-gold via-gold-bright to-gold px-8 py-4 rounded-full shadow-[0_0_20px_rgba(201,151,58,0.35)] hover:shadow-[0_0_30px_rgba(201,151,58,0.55)] transition-all duration-300 hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 sm:gap-3 font-heading font-bold uppercase tracking-widest text-xs sm:text-sm text-forest-deep bg-gradient-to-r from-gold via-gold-bright to-gold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-[0_0_20px_rgba(201,151,58,0.35)] hover:shadow-[0_0_30px_rgba(201,151,58,0.55)] transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto justify-center"
           >
             View All Mukhi
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
 

@@ -130,7 +130,7 @@ export function Blog() {
   const [featured, ...rest] = posts;
 
   return (
-    <section className="py-24 bg-forest-deep relative overflow-hidden">
+    <section className="py-14 sm:py-20 md:py-24 bg-forest-deep relative overflow-hidden">
       {/* Background lightened ~10% using the site's own forest/gold tones,
           fading from lighter at the top to the base tone lower down —
           reads as ambient light instead of a flat grey wash */}
@@ -142,20 +142,20 @@ export function Blog() {
       <div className="absolute inset-0 bg-mandala opacity-[0.03] pointer-events-none" />
 
       {/* OM Section Divider */}
-      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+      <div className="flex items-center justify-center gap-3 sm:gap-4 px-4 pt-0 pb-6 sm:pb-8 relative z-10">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
-        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <span className="text-gold text-xl sm:text-2xl font-serif opacity-80">ॐ</span>
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-10 sm:mb-14 md:mb-16">
           <div>
-            <span className="inline-flex items-center gap-2 text-[10px] font-heading font-bold uppercase tracking-widest text-gold border border-gold/30 bg-gold/5 px-4 py-1.5 rounded-full mb-5">
-              <GiBookCover className="w-3.5 h-3.5" /> Wisdom Journal
+            <span className="inline-flex items-center gap-2 text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-widest text-gold border border-gold/30 bg-gold/5 px-3.5 sm:px-4 py-1.5 rounded-full mb-4 sm:mb-5">
+              <GiBookCover className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> Wisdom Journal
             </span>
-            <h2 className="font-display text-4xl md:text-5xl text-gold-gradient tracking-tight">Sacred Knowledge</h2>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gold-gradient tracking-tight">Sacred Knowledge</h2>
           </div>
           <a href="#" className="hidden md:inline-flex items-center gap-2 text-gold font-heading font-bold uppercase tracking-widest text-xs border-b border-gold/30 pb-1 hover:border-gold hover:text-gold-bright transition-colors group">
             All Articles <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -163,10 +163,10 @@ export function Blog() {
         </div>
 
         {/* Featured + Sidebar */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
           {/* Featured Post */}
           <div className="lg:col-span-7 group cursor-pointer">
-            <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-gold/20 mb-6">
+            <div className="relative aspect-[16/9] rounded-xl sm:rounded-2xl overflow-hidden border border-gold/20 mb-4 sm:mb-6">
               <img
                 src={featured.image}
                 alt={featured.title}
@@ -174,17 +174,17 @@ export function Blog() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/30 to-transparent" />
               {featured.badge && (
-                <span className="absolute top-5 left-5 text-[10px] font-heading font-bold uppercase tracking-widest bg-gold text-forest-deep px-3 py-1.5 rounded-full shadow-md">
+                <span className="absolute top-3.5 left-3.5 sm:top-5 sm:left-5 text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-widest bg-gold text-forest-deep px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-md">
                   {featured.badge}
                 </span>
               )}
-              <div className="absolute bottom-6 left-6 right-6">
-                <span className="text-[10px] font-heading font-bold uppercase tracking-widest text-gold/70 mb-3 block">{featured.category}</span>
-                <h3 className="font-display text-2xl md:text-3xl text-cream leading-tight group-hover:text-gold transition-colors">{featured.title}</h3>
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
+                <span className="text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-widest text-gold/70 mb-2 sm:mb-3 block">{featured.category}</span>
+                <h3 className="font-display text-lg sm:text-2xl md:text-3xl text-cream leading-tight group-hover:text-gold transition-colors">{featured.title}</h3>
               </div>
             </div>
-            <p className="font-body text-cream/60 text-base leading-relaxed mb-5 max-w-xl">{featured.excerpt}</p>
-            <div className="flex items-center gap-4 text-xs font-heading uppercase tracking-widest text-gold/50">
+            <p className="font-body text-cream/60 text-sm sm:text-base leading-relaxed mb-4 sm:mb-5 max-w-xl">{featured.excerpt}</p>
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-[10px] sm:text-xs font-heading uppercase tracking-widest text-gold/50">
               <span>{featured.date}</span>
               <span className="w-1 h-1 rounded-full bg-gold/30" />
               <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{featured.readTime}</span>
@@ -195,23 +195,23 @@ export function Blog() {
           </div>
 
           {/* Sidebar Posts */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
+          <div className="lg:col-span-5 flex flex-col gap-4 sm:gap-6">
             {rest.map((post, i) => (
-              <div key={i} className="group flex gap-5 cursor-pointer p-4 rounded-xl border border-gold/10 hover:border-gold/40 hover:bg-gold/5 transition-all duration-300">
-                <div className="w-28 h-24 shrink-0 rounded-xl overflow-hidden border border-gold/15">
+              <div key={i} className="group flex gap-3.5 sm:gap-5 cursor-pointer p-3 sm:p-4 rounded-xl border border-gold/10 hover:border-gold/40 hover:bg-gold/5 transition-all duration-300">
+                <div className="w-20 h-20 sm:w-28 sm:h-24 shrink-0 rounded-lg sm:rounded-xl overflow-hidden border border-gold/15">
                   <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-75 group-hover:brightness-90" />
                 </div>
                 <div className="flex flex-col justify-between flex-1 min-w-0">
                   <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-[9px] font-heading font-bold uppercase tracking-widest text-gold/60">{post.category}</span>
+                    <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+                      <span className="text-[8px] sm:text-[9px] font-heading font-bold uppercase tracking-widest text-gold/60">{post.category}</span>
                       {post.badge && (
-                        <span className="text-[8px] font-heading font-bold uppercase bg-crimson text-white px-2 py-0.5 rounded">{post.badge}</span>
+                        <span className="text-[7px] sm:text-[8px] font-heading font-bold uppercase bg-crimson text-white px-1.5 sm:px-2 py-0.5 rounded">{post.badge}</span>
                       )}
                     </div>
-                    <h4 className="font-heading text-sm text-cream leading-snug line-clamp-2 group-hover:text-gold transition-colors">{post.title}</h4>
+                    <h4 className="font-heading text-xs sm:text-sm text-cream leading-snug line-clamp-2 group-hover:text-gold transition-colors">{post.title}</h4>
                   </div>
-                  <div className="flex items-center gap-3 text-[10px] font-heading uppercase tracking-widest text-gold/40 mt-2">
+                  <div className="flex items-center gap-2 sm:gap-3 text-[9px] sm:text-[10px] font-heading uppercase tracking-widest text-gold/40 mt-2">
                     <span>{post.date}</span>
                     <span>·</span>
                     <span>{post.readTime}</span>
@@ -219,7 +219,7 @@ export function Blog() {
                 </div>
               </div>
             ))}
-            <a href="#" className="mt-2 w-full py-3.5 border border-gold/30 rounded-xl text-gold font-heading font-bold uppercase tracking-widest text-xs text-center hover:border-gold hover:bg-gold/5 transition-all flex items-center justify-center gap-2">
+            <a href="#" className="mt-2 w-full py-3 sm:py-3.5 border border-gold/30 rounded-xl text-gold font-heading font-bold uppercase tracking-widest text-[10px] sm:text-xs text-center hover:border-gold hover:bg-gold/5 transition-all flex items-center justify-center gap-2">
               View All Articles <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>

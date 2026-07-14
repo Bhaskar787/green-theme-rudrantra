@@ -11,11 +11,11 @@ const events = [
 
 export function SpiritualCalendar() {
   return (
-    <section className="py-20 md:py-28 bg-forest border-t border-gold/20 overflow-hidden relative">
+    <section className="py-14 sm:py-20 md:py-24 lg:py-28 bg-forest border-t border-gold/20 overflow-hidden relative">
       {/* OM Section Divider */}
-      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+      <div className="flex items-center justify-center gap-3 sm:gap-4 px-4 pt-0 pb-6 sm:pb-8 relative z-10">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
-        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <span className="text-gold text-xl sm:text-2xl font-serif opacity-80">ॐ</span>
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
       </div>
 
@@ -23,51 +23,51 @@ export function SpiritualCalendar() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <span className="text-[10px] md:text-xs font-heading font-bold uppercase tracking-widest text-gold border border-gold/30 px-5 py-2 rounded-full inline-block mb-6 shadow-sm">
+        <div className="text-center mb-10 sm:mb-14 md:mb-16 max-w-3xl mx-auto">
+          <span className="text-[9px] sm:text-[10px] md:text-xs font-heading font-bold uppercase tracking-widest text-gold border border-gold/30 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full inline-block mb-4 sm:mb-6 shadow-sm">
             Vedic Panchang Tradition
           </span>
-          <h2 className="text-4xl md:text-5xl font-display text-gold-gradient tracking-tight leading-tight mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display text-gold-gradient tracking-tight leading-tight mb-4 sm:mb-6 px-2">
             Auspicious Timings
           </h2>
-          <p className="text-cream-soft/80 font-body text-lg leading-relaxed">
+          <p className="text-cream-soft/80 font-body text-sm sm:text-base md:text-lg leading-relaxed px-2">
             Wearing, cleansing, or energizing your sacred beads on these high-vibration lunar configurations multiplies their spiritual alignment according to the Shastras.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
           {events.map((ev, i) => {
             const IconComponent = ev.icon;
             return (
               <div 
                 key={i} 
-                className="bg-forest-deep border border-gold/20 rounded-2xl p-8 transition-all duration-500 hover:border-gold/60 hover:shadow-sacred-glow group flex flex-col justify-between relative overflow-hidden"
+                className="bg-forest-deep border border-gold/20 rounded-2xl p-6 sm:p-7 md:p-8 transition-all duration-500 hover:border-gold/60 hover:shadow-sacred-glow group flex flex-col justify-between relative overflow-hidden"
               >
                 {/* Traditional corner accent decoration */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-gold/10 to-transparent pointer-events-none rounded-bl-full" />
+                <div className="absolute top-0 right-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-bl from-gold/10 to-transparent pointer-events-none rounded-bl-full" />
                 
                 <div>
                   {/* Category Chip Line */}
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-[10px] font-heading font-bold tracking-widest text-forest-deep uppercase bg-gold px-3 py-1 rounded shadow-sm">
+                  <div className="flex items-center justify-between mb-5 sm:mb-6">
+                    <span className="text-[9px] sm:text-[10px] font-heading font-bold tracking-widest text-forest-deep uppercase bg-gold px-2.5 sm:px-3 py-1 rounded shadow-sm">
                       {ev.label}
                     </span>
-                    <div className="w-10 h-10 rounded-full border border-gold/30 bg-forest flex items-center justify-center text-gold group-hover:scale-110 group-hover:bg-gold group-hover:text-forest transition-all duration-300">
-                      <IconComponent className="w-5 h-5" />
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gold/30 bg-forest flex items-center justify-center text-gold group-hover:scale-110 group-hover:bg-gold group-hover:text-forest transition-all duration-300">
+                      <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
                   </div>
 
                   {/* Text Details */}
-                  <h3 className="font-display text-2xl text-cream mb-3 font-semibold">
+                  <h3 className="font-display text-xl sm:text-2xl text-cream mb-2.5 sm:mb-3 font-semibold">
                     {ev.name}
                   </h3>
-                  <p className="text-sm font-body text-cream-soft/70 leading-relaxed">
+                  <p className="text-xs sm:text-sm font-body text-cream-soft/70 leading-relaxed">
                     {ev.desc}
                   </p>
                 </div>
 
                 {/* Bottom decorative anchor frame element */}
-                <div className="mt-8 pt-4 border-t border-gold/10 flex items-center justify-between text-xs font-heading font-bold tracking-widest uppercase text-gold/50 group-hover:text-gold transition-colors">
+                <div className="mt-6 sm:mt-8 pt-3 sm:pt-4 border-t border-gold/10 flex items-center justify-between text-[10px] sm:text-xs font-heading font-bold tracking-widest uppercase text-gold/50 group-hover:text-gold transition-colors">
                   <span>View Sadhana Guide</span>
                   <span className="opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300">→</span>
                 </div>

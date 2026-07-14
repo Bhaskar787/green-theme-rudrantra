@@ -203,58 +203,58 @@ export function Testimonials() {
   }, [api, isHovering, isPaused]);
 
   return (
-    <section className="py-24 bg-forest-deep relative overflow-hidden">
+    <section className="py-14 sm:py-20 md:py-24 bg-forest-deep relative overflow-hidden">
       {/* Lotus/Prayer overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.28] mix-blend-screen bg-cover bg-center"
         style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1527489377706-5bf97e608852?auto=format&fit=crop&w=1920&q=80")' }}
       />
 
       {/* OM Section Divider */}
-      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+      <div className="flex items-center justify-center gap-3 sm:gap-4 px-4 pt-0 pb-6 sm:pb-8 relative z-10">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
-        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <span className="text-gold text-xl sm:text-2xl font-serif opacity-80">ॐ</span>
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
       </div>
-      
-      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
-        
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <span className="text-[10px] md:text-xs font-heading font-bold uppercase tracking-widest text-gold bg-gold/5 border border-gold/30 px-5 py-2 rounded-full inline-block mb-6 shadow-sm">
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+
+        <div className="text-center mb-10 sm:mb-14 md:mb-16 max-w-3xl mx-auto">
+          <span className="text-[9px] sm:text-[10px] md:text-xs font-heading font-bold uppercase tracking-widest text-gold bg-gold/5 border border-gold/30 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full inline-block mb-4 sm:mb-6 shadow-sm">
             Loved Worldwide
           </span>
-          <h2 className="text-4xl md:text-5xl font-display text-gold-gradient tracking-tight leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display text-gold-gradient tracking-tight leading-tight px-2">
             Voices of Our Community
           </h2>
-          <p className="text-cream/70 font-body text-lg leading-relaxed mt-6">
+          <p className="text-cream/70 font-body text-sm sm:text-base md:text-lg leading-relaxed mt-4 sm:mt-6 px-2">
             Real experiences from seekers who trusted us with their spiritual journey — every review below is from a verified authentic purchase.
           </p>
         </div>
 
         {/* Stats Bar */}
-        <div className="grid sm:grid-cols-[auto_1fr] gap-8 sm:gap-14 bg-forest/80 backdrop-blur border border-gold/30 rounded-3xl p-8 md:p-12 mb-16 shadow-xl">
-          <div className="flex flex-col items-center justify-center text-center sm:border-r sm:border-gold/20 sm:pr-14">
-            <span className="font-display text-6xl text-gold mb-2">{avgRating}</span>
-            <div className="flex items-center gap-1.5 mb-3">
+        <div className="grid sm:grid-cols-[auto_1fr] gap-6 sm:gap-8 md:gap-14 bg-forest/80 backdrop-blur border border-gold/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 mb-10 sm:mb-14 md:mb-16 shadow-xl">
+          <div className="flex flex-col items-center justify-center text-center sm:border-r sm:border-gold/20 sm:pr-8 md:pr-14">
+            <span className="font-display text-4xl sm:text-5xl md:text-6xl text-gold mb-2">{avgRating}</span>
+            <div className="flex items-center gap-1 sm:gap-1.5 mb-2 sm:mb-3">
               {[...Array(5)].map((_, i) => (
-                <GiStarMedal key={i} className="w-6 h-6 text-gold drop-shadow-[0_0_5px_rgba(201,151,58,0.8)]" />
+                <GiStarMedal key={i} className="w-5 h-5 sm:w-6 sm:h-6 text-gold drop-shadow-[0_0_5px_rgba(201,151,58,0.8)]" />
               ))}
             </div>
-            <span className="text-cream/50 font-heading text-xs uppercase tracking-widest">{testimonials.length * 187}+ verified reviews</span>
+            <span className="text-cream/50 font-heading text-[10px] sm:text-xs uppercase tracking-widest">{testimonials.length * 187}+ verified reviews</span>
           </div>
-          <div className="flex flex-col justify-center gap-3">
+          <div className="flex flex-col justify-center gap-2.5 sm:gap-3">
             {[5, 4, 3, 2, 1].map((star, i) => {
               const count = ratingBreakdown[i];
               const pct = Math.round((count / testimonials.length) * 100);
               return (
-                <div key={star} className="flex items-center gap-4 text-sm font-heading font-bold">
-                  <span className="w-16 text-gold/80 shrink-0 text-right tracking-widest uppercase text-xs">{star} Star</span>
+                <div key={star} className="flex items-center gap-2.5 sm:gap-4 text-xs sm:text-sm font-heading font-bold">
+                  <span className="w-12 sm:w-16 text-gold/80 shrink-0 text-right tracking-widest uppercase text-[10px] sm:text-xs">{star} Star</span>
                   <div className="flex-1 h-1.5 rounded-full bg-forest-deep overflow-hidden border border-gold/10">
                     <div className="h-full bg-gradient-to-r from-gold to-gold-bright rounded-full relative" style={{ width: `${pct || 2}%` }}>
                       <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
                     </div>
                   </div>
-                  <span className="w-10 text-right text-gold/50 shrink-0">{pct}%</span>
+                  <span className="w-8 sm:w-10 text-right text-gold/50 shrink-0 text-[10px] sm:text-sm">{pct}%</span>
                 </div>
               );
             })}
@@ -262,12 +262,12 @@ export function Testimonials() {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setActiveFilter(f)}
-              className={`px-5 py-2.5 rounded-full text-xs font-heading font-bold uppercase tracking-widest transition-all border ${
+              className={`px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-heading font-bold uppercase tracking-widest transition-all border ${
                 activeFilter === f
                   ? 'bg-gold text-forest-deep border-gold shadow-sacred-glow'
                   : 'bg-forest text-gold/70 border-gold/30 hover:border-gold hover:text-gold'
@@ -287,20 +287,20 @@ export function Testimonials() {
             setApi={setApi}
             opts={{ align: 'start', loop: true }}
           >
-            <CarouselContent className="-ml-6">
+            <CarouselContent className="-ml-4 sm:-ml-6">
               {filtered.map((t, i) => (
-                <CarouselItem key={i} className="pl-6 sm:basis-1/2 lg:basis-1/3">
-                  <div className="flex flex-col h-full bg-forest/60 backdrop-blur-md border border-gold/30 rounded-3xl p-8 hover:bg-forest/80 hover:border-gold/60 transition-all duration-300 shadow-lg relative group">
+                <CarouselItem key={i} className="pl-4 sm:pl-6 sm:basis-1/2 lg:basis-1/3">
+                  <div className="flex flex-col h-full bg-forest/60 backdrop-blur-md border border-gold/30 rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 hover:bg-forest/80 hover:border-gold/60 transition-all duration-300 shadow-lg relative group">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-gold/5 to-transparent rounded-bl-full pointer-events-none" />
-                    
-                    <div className="flex items-start justify-between mb-6 relative z-10">
-                      <div className="flex items-center gap-4">
+
+                    <div className="flex items-start justify-between mb-4 sm:mb-6 relative z-10">
+                      <div className="flex items-center gap-3 sm:gap-4">
                         <div className="relative">
                           <img
                             src={t.avatar}
                             alt={t.name}
                             loading="lazy"
-                            className="w-14 h-14 rounded-full object-cover shrink-0 border-2 border-gold p-0.5"
+                            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover shrink-0 border-2 border-gold p-0.5"
                             onError={(e) => {
                               const target = e.currentTarget;
                               target.style.display = 'none';
@@ -308,45 +308,45 @@ export function Testimonials() {
                             }}
                           />
                           <div
-                            className={`hidden w-14 h-14 rounded-full ${initialsColor(t.initials)} items-center justify-center font-display text-lg text-gold border-2 border-gold shrink-0`}
+                            className={`hidden w-12 h-12 sm:w-14 sm:h-14 rounded-full ${initialsColor(t.initials)} items-center justify-center font-display text-base sm:text-lg text-gold border-2 border-gold shrink-0`}
                           >
                             {t.initials}
                           </div>
                           {t.verified && (
                             <div className="absolute -bottom-1 -right-1 bg-forest rounded-full p-0.5">
-                              <BadgeCheck className="w-4 h-4 text-gold fill-forest" />
+                              <BadgeCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gold fill-forest" />
                             </div>
                           )}
                         </div>
                         <div>
-                          <span className="font-heading font-bold text-base text-cream block mb-0.5">{t.name}</span>
-                          <span className="text-gold/60 font-body text-xs block">{t.location}</span>
+                          <span className="font-heading font-bold text-sm sm:text-base text-cream block mb-0.5">{t.name}</span>
+                          <span className="text-gold/60 font-body text-[11px] sm:text-xs block">{t.location}</span>
                         </div>
                       </div>
                       {t.hasPhoto && (
-                        <span className="flex items-center gap-1 text-[10px] font-heading uppercase tracking-widest text-gold/60">
+                        <span className="flex items-center gap-1 text-[9px] sm:text-[10px] font-heading uppercase tracking-widest text-gold/60 shrink-0">
                           <ImageIcon className="w-3 h-3" /> Photo
                         </span>
                       )}
                     </div>
 
-                    <div className="flex items-center gap-1 mb-4">
+                    <div className="flex items-center gap-1 mb-3 sm:mb-4">
                       {[...Array(5)].map((_, j) => (
-                        <GiStarMedal key={j} className={`w-4 h-4 ${j < t.rating ? 'text-gold' : 'text-gold/20'}`} />
+                        <GiStarMedal key={j} className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${j < t.rating ? 'text-gold' : 'text-gold/20'}`} />
                       ))}
                     </div>
 
-                    <h4 className="font-display text-xl text-gold-gradient mb-3 leading-snug">{t.title}</h4>
-                    <p className="text-cream-soft/80 font-body text-base leading-relaxed line-clamp-5 flex-1 mb-6">{t.text}</p>
+                    <h4 className="font-display text-lg sm:text-xl text-gold-gradient mb-2 sm:mb-3 leading-snug">{t.title}</h4>
+                    <p className="text-cream-soft/80 font-body text-sm sm:text-base leading-relaxed line-clamp-5 flex-1 mb-4 sm:mb-6">{t.text}</p>
 
-                    <div className="flex flex-col gap-3 pt-5 border-t border-gold/20">
-                      <span className="text-gold/90 font-heading text-xs font-bold uppercase tracking-widest">
+                    <div className="flex flex-col gap-2.5 sm:gap-3 pt-4 sm:pt-5 border-t border-gold/20">
+                      <span className="text-gold/90 font-heading text-[10px] sm:text-xs font-bold uppercase tracking-widest">
                         Item: {t.product}
                       </span>
                       <div className="flex items-center justify-between">
-                        <span className="text-cream/40 font-body text-xs">{t.date}</span>
-                        <button className="flex items-center gap-1.5 text-gold/50 hover:text-gold transition-colors text-xs font-heading uppercase">
-                          <ThumbsUp className="w-3.5 h-3.5" /> Helpful ({t.helpful})
+                        <span className="text-cream/40 font-body text-[11px] sm:text-xs">{t.date}</span>
+                        <button className="flex items-center gap-1.5 text-gold/50 hover:text-gold transition-colors text-[10px] sm:text-xs font-heading uppercase">
+                          <ThumbsUp className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> Helpful ({t.helpful})
                         </button>
                       </div>
                     </div>
@@ -358,22 +358,22 @@ export function Testimonials() {
 
           {/* Controls */}
           {filtered.length > 0 && (
-            <div className="flex items-center justify-center gap-6 mt-12">
+            <div className="flex items-center justify-center gap-3 sm:gap-6 mt-8 sm:mt-12">
               <button
                 type="button"
                 onClick={() => api?.scrollPrev()}
-                className="w-12 h-12 rounded-full border border-gold/40 bg-forest flex items-center justify-center text-gold hover:bg-gold hover:text-forest transition-all shadow-md"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gold/40 bg-forest flex items-center justify-center text-gold hover:bg-gold hover:text-forest transition-all shadow-md"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 {Array.from({ length: scrollSnapCount }).map((_, i) => (
                   <button
                     key={i}
                     onClick={() => api?.scrollTo(i)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      i === selectedIndex ? 'w-8 bg-gold shadow-[0_0_8px_rgba(201,151,58,0.8)]' : 'w-2 bg-gold/20 hover:bg-gold/50'
+                    className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
+                      i === selectedIndex ? 'w-6 sm:w-8 bg-gold shadow-[0_0_8px_rgba(201,151,58,0.8)]' : 'w-1.5 sm:w-2 bg-gold/20 hover:bg-gold/50'
                     }`}
                   />
                 ))}
@@ -382,17 +382,17 @@ export function Testimonials() {
               <button
                 type="button"
                 onClick={() => api?.scrollNext()}
-                className="w-12 h-12 rounded-full border border-gold/40 bg-forest flex items-center justify-center text-gold hover:bg-gold hover:text-forest transition-all shadow-md"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gold/40 bg-forest flex items-center justify-center text-gold hover:bg-gold hover:text-forest transition-all shadow-md"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
               <button
                 type="button"
                 onClick={() => setIsPaused((p) => !p)}
-                className="w-12 h-12 rounded-full border border-gold/20 bg-forest-deep flex items-center justify-center text-gold/60 hover:text-gold hover:border-gold/50 transition-colors ml-4"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gold/20 bg-forest-deep flex items-center justify-center text-gold/60 hover:text-gold hover:border-gold/50 transition-colors ml-2 sm:ml-4"
               >
-                {isPaused ? <Play className="w-5 h-5 fill-current" /> : <Pause className="w-5 h-5 fill-current" />}
+                {isPaused ? <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current" /> : <Pause className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />}
               </button>
             </div>
           )}

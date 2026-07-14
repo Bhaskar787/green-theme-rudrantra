@@ -49,51 +49,51 @@ const galleryImages = [
 
 export function AuthenticityGrid() {
   return (
-    <section className="py-24 bg-forest-deep relative overflow-hidden">
+    <section className="py-14 sm:py-20 md:py-24 bg-forest-deep relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 bg-stars opacity-10 pointer-events-none" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-30" />
 
       {/* OM Section Divider */}
-      <div className="flex items-center justify-center gap-4 px-4 pt-0 pb-8 relative z-10">
+      <div className="flex items-center justify-center gap-3 sm:gap-4 px-4 pt-0 pb-6 sm:pb-8 relative z-10">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
-        <span className="text-gold text-2xl font-serif opacity-80">ॐ</span>
+        <span className="text-gold text-xl sm:text-2xl font-serif opacity-80">ॐ</span>
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold to-transparent max-w-xs opacity-60" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-20 max-w-3xl mx-auto">
-          <span className="inline-flex items-center gap-2 text-[10px] font-heading font-bold uppercase tracking-widest text-gold border border-gold/30 bg-gold/5 px-5 py-2 rounded-full mb-6">
-            <GiShield className="w-3.5 h-3.5" /> Our Authenticity Promise
+        <div className="text-center mb-10 sm:mb-14 md:mb-20 max-w-3xl mx-auto">
+          <span className="inline-flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] font-heading font-bold uppercase tracking-widest text-gold border border-gold/30 bg-gold/5 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6">
+            <GiShield className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> Our Authenticity Promise
           </span>
-          <h2 className="font-display text-4xl md:text-5xl text-gold-gradient tracking-tight leading-tight mb-6">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gold-gradient tracking-tight leading-tight mb-4 sm:mb-6 px-2">
             Trust, Verified at Every Step
           </h2>
-          <p className="font-body text-cream/70 text-lg leading-relaxed">
+          <p className="font-body text-cream/70 text-sm sm:text-base md:text-lg leading-relaxed px-2">
             In a market flooded with imitations, our four-pillar authentication system ensures every bead that reaches you is exactly what the Shiva Purana describes.
           </p>
         </div>
 
         {/* Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-16 md:mb-20">
           {pillars.map((p, i) => (
-            <div key={i} className="group bg-forest border border-gold/20 rounded-2xl p-8 hover:border-gold/60 hover:shadow-[0_0_30px_rgba(201,151,58,0.1)] transition-all duration-500 flex flex-col">
-              <div className="w-14 h-14 rounded-xl border border-gold/30 bg-forest-deep flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-forest-deep transition-colors duration-500 mb-6">
-                <p.icon className="w-7 h-7" />
+            <div key={i} className="group bg-forest border border-gold/20 rounded-2xl p-6 sm:p-7 md:p-8 hover:border-gold/60 hover:shadow-[0_0_30px_rgba(201,151,58,0.1)] transition-all duration-500 flex flex-col">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl border border-gold/30 bg-forest-deep flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-forest-deep transition-colors duration-500 mb-5 sm:mb-6">
+                <p.icon className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
-              <h3 className="font-display text-xl text-gold mb-3 leading-tight">{p.title}</h3>
-              <p className="font-body text-cream/60 text-sm leading-relaxed flex-1 mb-6">{p.desc}</p>
-              <div className="pt-5 border-t border-gold/15">
-                <span className="font-display text-3xl text-gold-bright block">{p.stat}</span>
-                <span className="text-[10px] font-heading uppercase tracking-widest text-gold/50">{p.statLabel}</span>
+              <h3 className="font-display text-lg sm:text-xl text-gold mb-2.5 sm:mb-3 leading-tight">{p.title}</h3>
+              <p className="font-body text-cream/60 text-xs sm:text-sm leading-relaxed flex-1 mb-5 sm:mb-6">{p.desc}</p>
+              <div className="pt-4 sm:pt-5 border-t border-gold/15">
+                <span className="font-display text-2xl sm:text-3xl text-gold-bright block">{p.stat}</span>
+                <span className="text-[9px] sm:text-[10px] font-heading uppercase tracking-widest text-gold/50">{p.statLabel}</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Gallery Strip */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
           {galleryImages.map((img, i) => (
             <div key={i} className={`relative overflow-hidden rounded-2xl border border-gold/20 group ${i === 1 ? 'md:row-span-1' : ''}`}>
               <div className="aspect-[4/3]">
@@ -103,8 +103,8 @@ export function AuthenticityGrid() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 brightness-75 group-hover:brightness-90"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-deep via-transparent to-transparent" />
-                <div className="absolute bottom-5 left-5">
-                  <span className="text-xs font-heading font-bold uppercase tracking-widest text-gold/80 border border-gold/30 bg-forest-deep/70 backdrop-blur px-3 py-1.5 rounded-full">
+                <div className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5">
+                  <span className="text-[10px] sm:text-xs font-heading font-bold uppercase tracking-widest text-gold/80 border border-gold/30 bg-forest-deep/70 backdrop-blur px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full">
                     {img.label}
                   </span>
                 </div>
@@ -114,14 +114,14 @@ export function AuthenticityGrid() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-6 bg-forest border border-gold/30 rounded-2xl px-10 py-8 shadow-xl">
-            <GiAllSeeingEye className="w-10 h-10 text-gold shrink-0" />
-            <div className="text-left">
-              <h4 className="font-display text-xl text-gold mb-1">Still have doubts?</h4>
-              <p className="font-body text-cream/60 text-sm">Speak with our certified Vedic consultants before you buy — it's complimentary.</p>
+        <div className="mt-10 sm:mt-14 md:mt-16 text-center">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 bg-forest border border-gold/30 rounded-2xl px-6 sm:px-8 md:px-10 py-6 sm:py-8 shadow-xl">
+            <GiAllSeeingEye className="w-8 h-8 sm:w-10 sm:h-10 text-gold shrink-0" />
+            <div className="text-center sm:text-left">
+              <h4 className="font-display text-lg sm:text-xl text-gold mb-1">Still have doubts?</h4>
+              <p className="font-body text-cream/60 text-xs sm:text-sm">Speak with our certified Vedic consultants before you buy — it's complimentary.</p>
             </div>
-            <a href="#" className="shrink-0 px-7 py-3 bg-gradient-to-r from-gold to-gold-soft text-forest-deep font-heading font-bold uppercase tracking-widest text-xs rounded-full hover:shadow-[0_0_20px_rgba(201,151,58,0.4)] transition-all">
+            <a href="#" className="shrink-0 px-6 sm:px-7 py-2.5 sm:py-3 bg-gradient-to-r from-gold to-gold-soft text-forest-deep font-heading font-bold uppercase tracking-widest text-[11px] sm:text-xs rounded-full hover:shadow-[0_0_20px_rgba(201,151,58,0.4)] transition-all w-full sm:w-auto">
               Book Free Call
             </a>
           </div>
