@@ -27,12 +27,14 @@ const reasons = [
 export function WhyChoose() {
   return (
     <section className="py-24 bg-forest-light relative overflow-hidden">
-      {/* Pashupatinath Background Overlay */}
+      {/* Pashupatinath Background Overlay — opacity raised so the image reads clearly */}
       <div 
-        className="absolute inset-0 opacity-[0.45] bg-cover bg-center"
+        className="absolute inset-0 opacity-[0.65] bg-cover bg-center"
         style={{ backgroundImage: 'url("https://static.vecteezy.com/system/resources/previews/069/690/059/large_2x/serene-monk-meditating-in-mountain-cave-illuminated-by-golden-rays-of-setting-sun-surrounded-by-lush-greenery-and-majestic-mountains-evokes-sense-of-peace-and-tranquility-free-photo.jpeg")' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-forest-light/70 via-forest-light/35 to-forest-light/75" />
+      {/* Overlay softened (was /70 /35 /75) so the photo shows through more, while
+          still darkening top/bottom enough to keep the title and cards legible */}
+      <div className="absolute inset-0 bg-gradient-to-b from-forest-light/55 via-forest-light/20 to-forest-light/60" />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         
