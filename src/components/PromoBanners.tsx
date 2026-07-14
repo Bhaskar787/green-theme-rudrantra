@@ -92,8 +92,7 @@ export function PromoBanners() {
         />
         {/* tint + vignette: darkens/greens the photo and fades it out at the
             edges so it blends into the sections above and below */}
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-light/80 via-forest-light/60 to-forest-light/90" />
-        <div className="absolute inset-0 bg-forest-deep/20 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-light/55 via-forest-light/30 to-forest-light/65" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -25,12 +25,12 @@ export function TrustStrip() {
       
       {/* Background Image Overlay */}
       <div 
-        className="absolute inset-0 opacity-[0.05] bg-cover bg-center"
+        className="absolute inset-0 opacity-[0.25] bg-cover bg-center"
         style={{ backgroundImage: 'url("https://shivalordimage.com/storage/2026/06/Sacred-Shivling-with-Rudraksha-Mala-in-Golden-Light-768x439.webp")' }}
       />
       
       {/* Gradient Overlay for Depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1A14] via-transparent to-[#0A1A14]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1A14]/85 via-transparent to-[#0A1A14]/85" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

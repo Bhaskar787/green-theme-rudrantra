@@ -51,14 +51,14 @@ export function HeroSlider() {
 
   return (
     <section className="relative w-full h-[85vh] min-h-[600px] overflow-hidden bg-[#0A1A14]">
-      {/* Background Image with subtle opacity */}
+      {/* Background Image, clearly visible */}
       <div
-        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${isTransitioning ? 'opacity-0' : 'opacity-40'}`}
+        className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${isTransitioning ? 'opacity-0' : 'opacity-70'}`}
         style={{ backgroundImage: `url(${slide.image})` }}
       />
       
-      {/* Dark gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0A1A14] via-[#0A1A14]/70 to-transparent" />
+      {/* Soft gradient fade for text readability, image stays visible */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0A1A14]/95 via-[#0A1A14]/45 to-[#0A1A14]/10" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex items-center max-w-7xl mx-auto px-6 md:px-12">

@@ -31,10 +31,10 @@ export function Newsletter() {
     <section className="py-24 bg-forest-light relative overflow-hidden">
       {/* Himalayan misty peaks background */}
       <div 
-        className="absolute inset-0 opacity-10 mix-blend-screen bg-cover bg-center"
+        className="absolute inset-0 opacity-[0.26] mix-blend-screen bg-cover bg-center"
         style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1920&q=80")' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/80 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/70 to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-forest border border-gold/30 rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12 relative">

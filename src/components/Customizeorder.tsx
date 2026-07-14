@@ -125,10 +125,10 @@ export function CustomizeOrder() {
     <section className="py-24 bg-forest relative overflow-hidden border-y border-gold/10">
       {/* Himalayan background — visible at a proper, tasteful opacity behind the astro field */}
       <div
-        className="absolute inset-0 opacity-20 bg-cover bg-center"
+        className="absolute inset-0 opacity-[0.32] bg-cover bg-center"
         style={{ backgroundImage: 'url("https://png.pngtree.com/background/20250109/original/pngtree-astrology-zodiac-sign-of-horoscope-in-deep-blue-the-star-and-picture-image_15515530.jpg")' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-forest via-forest/70 to-forest pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-forest/80 via-forest/40 to-forest/80 pointer-events-none" />
 
       {/* Astrological star field, planetary orbits & birth-chart motif */}
       <AstroBackground />

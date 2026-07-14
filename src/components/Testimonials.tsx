@@ -206,7 +206,7 @@ export function Testimonials() {
     <section className="py-24 bg-forest-deep relative overflow-hidden">
       {/* Lotus/Prayer overlay */}
       <div 
-        className="absolute inset-0 opacity-[0.08] mix-blend-screen bg-cover bg-center"
+        className="absolute inset-0 opacity-[0.28] mix-blend-screen bg-cover bg-center"
         style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1527489377706-5bf97e608852?auto=format&fit=crop&w=1920&q=80")' }}
       />
       

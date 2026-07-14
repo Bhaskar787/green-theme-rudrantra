@@ -29,10 +29,10 @@ export function WhyChoose() {
     <section className="py-24 bg-forest-light relative overflow-hidden">
       {/* Pashupatinath Background Overlay */}
       <div 
-        className="absolute inset-0 opacity-[0.08] mix-blend-luminosity bg-cover bg-center"
+        className="absolute inset-0 opacity-[0.24] mix-blend-luminosity bg-cover bg-center"
         style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1920&q=80")' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-forest-light via-transparent to-forest-light" />
+      <div className="absolute inset-0 bg-gradient-to-b from-forest-light/85 via-transparent to-forest-light/85" />
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         
