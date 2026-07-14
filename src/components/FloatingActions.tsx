@@ -69,33 +69,33 @@ export function FloatingActions() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
-        className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300"
+        className="fixed bottom-4 left-3 sm:bottom-6 sm:left-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300"
       >
         <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30" />
-        <FaWhatsapp className="w-7 h-7 relative z-10" />
+        <FaWhatsapp className="w-6 h-6 sm:w-7 sm:h-7 relative z-10" />
       </a>
 
       {/* Right stack — scroll-to-top + AI assistant */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+      <div className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-2 sm:gap-3 max-w-[calc(100vw-24px)]">
         {/* Scroll to top */}
         <button
           type="button"
           onClick={handleScrollToTop}
           aria-label="Scroll to top"
-          className={`w-12 h-12 rounded-full border border-gold/40 bg-forest-deep text-gold flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-gold hover:text-forest-deep ${
+          className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gold/40 bg-forest-deep text-gold flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-gold hover:text-forest-deep shrink-0 ${
             showScrollTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
           }`}
         >
-          <ArrowUp className="w-5 h-5" />
+          <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         {/* AI assistant chat panel */}
         {isChatOpen && (
-          <div className="w-[90vw] max-w-sm h-[28rem] rounded-2xl border border-gold/30 bg-forest-deep shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 fade-in duration-300">
-            <div className="flex items-center justify-between px-5 py-4 border-b border-gold/20 bg-forest">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-gold" />
-                <span className="font-heading font-bold text-sm uppercase tracking-widest text-gold">
+          <div className="w-[85vw] max-w-sm h-[26rem] sm:h-[28rem] rounded-2xl border border-gold/30 bg-forest-deep shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 fade-in duration-300">
+            <div className="flex items-center justify-between px-4 sm:px-5 py-3 sm:py-4 border-b border-gold/20 bg-forest">
+              <div className="flex items-center gap-2 min-w-0">
+                <Sparkles className="w-4 h-4 text-gold shrink-0" />
+                <span className="font-heading font-bold text-xs sm:text-sm uppercase tracking-widest text-gold truncate">
                   Ask RudraAI
                 </span>
               </div>
@@ -103,13 +103,13 @@ export function FloatingActions() {
                 type="button"
                 onClick={() => setIsChatOpen(false)}
                 aria-label="Close chat"
-                className="text-cream/60 hover:text-gold transition-colors"
+                className="text-cream/60 hover:text-gold transition-colors shrink-0"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
+            <div ref={scrollRef} className="flex-1 overflow-y-auto px-3 sm:px-4 py-4 space-y-3">
               {messages.map((m) => (
                 <div
                   key={m.id}
@@ -124,18 +124,18 @@ export function FloatingActions() {
               ))}
             </div>
 
-            <form onSubmit={handleSend} className="flex items-center gap-2 p-3 border-t border-gold/20 bg-forest">
+            <form onSubmit={handleSend} className="flex items-center gap-2 p-2.5 sm:p-3 border-t border-gold/20 bg-forest">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about mukhis, malas..."
-                className="flex-1 px-4 py-2.5 text-sm font-body rounded-full border border-gold/30 bg-forest-deep/60 placeholder:text-cream/40 focus:outline-none focus:border-gold text-cream"
+                className="flex-1 min-w-0 px-3 sm:px-4 py-2.5 text-sm font-body rounded-full border border-gold/30 bg-forest-deep/60 placeholder:text-cream/40 focus:outline-none focus:border-gold text-cream"
               />
               <button
                 type="submit"
                 aria-label="Send message"
-                className="w-10 h-10 shrink-0 rounded-full bg-gold text-forest-deep flex items-center justify-center hover:bg-gold-bright transition-colors"
+                className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full bg-gold text-forest-deep flex items-center justify-center hover:bg-gold-bright transition-colors"
               >
                 <Send className="w-4 h-4" />
               </button>
@@ -148,9 +148,9 @@ export function FloatingActions() {
           type="button"
           onClick={() => setIsChatOpen((v) => !v)}
           aria-label="Open AI assistant"
-          className="w-14 h-14 rounded-full bg-gradient-to-r from-gold to-gold-soft text-forest-deep flex items-center justify-center shadow-sacred-glow hover:scale-105 transition-transform duration-300"
+          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-r from-gold to-gold-soft text-forest-deep flex items-center justify-center shadow-sacred-glow hover:scale-105 transition-transform duration-300 shrink-0"
         >
-          {isChatOpen ? <X className="w-6 h-6" /> : <Sparkles className="w-6 h-6" />}
+          {isChatOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />}
         </button>
       </div>
     </>
