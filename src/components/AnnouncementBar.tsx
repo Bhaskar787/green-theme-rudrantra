@@ -10,9 +10,7 @@ const announcements = [
 ];
 
 export function AnnouncementBar() {
-  const [visible, setVisible] = useState(true);
-
-  if (!visible) return null;
+  
 
   return (
     <div className="relative bg-[linear-gradient(90deg,#B8912E,#D4AF37,#FDF2B5,#D4AF37,#B8912E)] border-b border-[#8A6D1E]/40 text-[#2D2400] overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.25)]">
@@ -45,13 +43,7 @@ export function AnnouncementBar() {
         })}
       </div>
 
-      <button
-        onClick={() => setVisible(false)}
-        className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 rounded-full text-[#2D2400]/70 hover:text-[#2D2400] hover:bg-[#2D2400]/10 transition-colors z-20"
-        aria-label="Close announcement"
-      >
-        <X className="w-4 h-4" />
-      </button>
+   
     </div>
   );
 }
