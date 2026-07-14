@@ -126,7 +126,7 @@ export function CustomizeOrder() {
       {/* Himalayan background — visible at a proper, tasteful opacity behind the astro field */}
       <div
         className="absolute inset-0 opacity-[0.32] bg-cover bg-center"
-        style={{ backgroundImage: 'url("https://png.pngtree.com/background/20250109/original/pngtree-astrology-zodiac-sign-of-horoscope-in-deep-blue-the-star-and-picture-image_15515530.jpg")' }}
+        style={{ backgroundImage: 'url("https://static.vecteezy.com/system/resources/previews/022/918/088/non_2x/astrology-wheel-with-zodiac-signs-on-outer-space-background-mystery-and-esoteric-star-map-horoscope-illustration-spiritual-tarot-poster-vector.jpg")' }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-forest/80 via-forest/40 to-forest/80 pointer-events-none" />
 
