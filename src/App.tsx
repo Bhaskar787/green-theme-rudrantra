@@ -4,6 +4,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
 import HomePage from '@/pages/HomePage';
+import MukhiGuidePage from '@/pages/MukhiGuidePage';
 import { UIProvider } from '@/context/UIContext';
 import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
@@ -14,6 +15,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
+      <Route path="/mukhi-guide" component={MukhiGuidePage} />
       <Route component={NotFound} />
     </Switch>
   );
