@@ -59,6 +59,7 @@ export function Navbar() {
             </span>
           </Link>
         </div>
+        
 
         {/* CENTER (Desktop Only) */}
         <nav className="hidden xl:flex items-center justify-center gap-4 2xl:gap-6 flex-1 min-w-0 px-4">
